@@ -107,7 +107,9 @@ $ apk add npm
 
 ```bash
 $ wget https://github.com/jfadev/bottok/archive/refs/tags/v1.0.0.zip
-$ unzip v1.0.0.zip bottok
+$ unzip v1.0.0.zip
+$ rm v1.0.0.zip
+$ mv bottok-1.0.0 bottok
 ```
 
 4. Install Bot Tok
