@@ -48,6 +48,8 @@ $ npm install
 
 #### Linux
 
+🛟 [Install in Linux (Ubuntu) video](https://www.youtube.com/watch?v=1KEFIpNocjs)
+
 Requirements: [nodejs](https://nodejs.org/) >=18 (Latest [maintenance LTS](https://github.com/nodejs/Release#release-schedule) version),
  [npm](https://www.npmjs.com/) and [chrome/chromium](https://www.chromium.org/chromium-projects/).
 
