@@ -19,9 +19,10 @@ based in node.js, puppeteer and zefoy.com.
 * Up Favorites
 * Up Comment Likes
 * Video URLs History
-* Captcha in Terminal
+* Captcha in Terminal (free mode)
+* Auto Captcha Solver (premium mode)
 * Save Cookies (Zefoy Session)
-* Random User Agent
+* Random User-Agent
 * Proxy
 * Run in Windows, Linux and Android (Termux)
 
@@ -29,11 +30,46 @@ based in node.js, puppeteer and zefoy.com.
 
 #### Windows
 
-Requirements: [nodejs](https://nodejs.org/) >=18 (Latest [maintenance LTS](https://github.com/nodejs/Release#release-schedule) version),
+1. Run in terminal
+
+```bash
+curl -o win-install.bat https://raw.githubusercontent.com/jfadev/bottok/main/win-install.bat & win-install.bat
+
+```
+
+#### Linux
+
+![](doc/1.png?raw=true)
+
+
+1. Run in terminal
+
+```bash
+wget https://raw.githubusercontent.com/jfadev/bottok/main/ubuntu-install.sh && chmod +x ubuntu-install.sh && ./ubuntu-install.sh
+```
+
+#### Android (Termux)
+
+![](doc/5.png?raw=true)
+
+Requirements: [termux](https://termux.dev/en/)
+
+1. Run in terminal
+
+```bash
+wget https://raw.githubusercontent.com/jfadev/bottok/main/termux-install.sh && chmod +x termux-install.sh && ./termux-install.sh
+```
+
+## Manual Install
+
+#### Windows
+
+Requirements: [git](https://git-scm.com/downloads), [nodejs](https://nodejs.org/) >=18 (Latest [maintenance LTS](https://github.com/nodejs/Release#release-schedule) version),
  [npm](https://www.npmjs.com/) and [chrome/chromium](https://www.chromium.org/chromium-projects/).
 
 1. Download and Install [nodejs](https://nodejs.org/en/download/)
-2. [Download](https://github.com/jfadev/bottok/releases) or clone this repository in terminal
+
+2. Clone this repository in terminal
 
 ```bash
 $ git clone git@github.com:jfadev/bottok.git
@@ -50,18 +86,19 @@ $ npm install
 
 🛟 [Install in Linux (Ubuntu) video](https://www.youtube.com/watch?v=1KEFIpNocjs)
 
-Requirements: [nodejs](https://nodejs.org/) >=18 (Latest [maintenance LTS](https://github.com/nodejs/Release#release-schedule) version),
+Requirements: [git](https://git-scm.com/downloads), [nodejs](https://nodejs.org/) >=18 (Latest [maintenance LTS](https://github.com/nodejs/Release#release-schedule) version),
  [npm](https://www.npmjs.com/) and [chrome/chromium](https://www.chromium.org/chromium-projects/).
 
-![](doc/1.png?raw=true)
 
 1. Install [nodejs](https://nodejs.org/)
    
 ```bash
 $ sudo apt install nodejs
+$ sudo apt install npm
+$ sudo apt install git
 ```
 
-2. [Download](https://github.com/jfadev/bottok/releases) or clone this repository in terminal
+2. Clone this repository in terminal
 
 ```bash
 $ git clone git@github.com:jfadev/bottok.git
@@ -73,14 +110,12 @@ $ cd bottok
 $ npm install
 ```
 
-#### Android
+#### Android (Termux)
 
 Requirements: [termux](https://termux.dev/en/)
 
 There is no build of Google Chrome available for ARM at this moment, so using chromium instead.
 Installing chromium on Termux directly requires snap which is another big hurdle so alternatively using alpine distro here.
-
-![](doc/5.png?raw=true)
 
 1. Install [alpine](https://alpinelinux.org) in termux
 
@@ -98,20 +133,18 @@ $ apk update && apk add --no-cache nmap && \
     chromium
 ```
 
-2. Install [nodejs](https://nodejs.org/) and [npm](https://www.npmjs.com/)
+2. Install [git](https://git-scm.com/downloads), [nodejs](https://nodejs.org/) and [npm](https://www.npmjs.com/)
    
 ```bash
 $ apk add nodejs
 $ apk add npm
+$ apk add git
 ```
 
-3. [Download](https://github.com/jfadev/bottok/releases) this repository
+3. Clone this repository in terminal
 
 ```bash
-$ wget https://github.com/jfadev/bottok/archive/refs/tags/v1.0.0.zip
-$ unzip v1.0.0.zip
-$ rm v1.0.0.zip
-$ mv bottok-1.0.0 bottok
+$ git clone git@github.com:jfadev/bottok.git
 ```
 
 4. Install Bot Tok
@@ -120,6 +153,39 @@ $ cd bottok
 $ npm install
 ```
 
+To enter Alpine from Termux use the following command:
+```bash
+$ proot-distro login alpine
+```
+
+## Update
+
+#### Windows
+
+1. Run in terminal
+
+```bash
+$ cd bottok
+$ win-update.bat
+```
+
+#### Linux
+
+1. Run in terminal
+
+```bash
+$ cd bottok
+$ ./ubuntu-update.sh
+```
+
+#### Android (Termux)
+
+1. Run in terminal
+
+```bash
+$ cd bottok
+$ ./alpine-update.sh
+```
 
 ## Use
 
@@ -128,20 +194,6 @@ $ node bottok.js
 ```
 And follow the instructions, solve the captcha in the console if necessary, choose one of the available tasks and let the bot work.
 
-## Advanced
-
-##### Use Proxy
-
-```bash
-$ node bottok.js -p http://127.0.0.1:8080
-```
-
-##### Use Custom User Agent
-
-```bash
-$ node bottok.js -u 'Mozilla/5.0 (iPad; CPU OS 8_4 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12H143 Safari/600.1.4'
-```
-
 ## Options
 
 ```txt
@@ -149,11 +201,46 @@ Usage: node bottok.js [options]
 
 Options:
   -h, --help            Show help
-  -v, --video <link>    TikTok video URL to perform the task on
+  -v, --version         BotTok version
+  -l, --video <link>    TikTok video URL to perform the task on
   -t, --task <task>     Task to perform on the TikTok video (example: 'Up Views')
   -c, --cookies <file>  File path to store session cookies (default: cookies.json)
   -u, --user-agent <ua> User agent to be used (default: random user-agent)
-  -p, --proxy <proxy>   The proxy to be used (example: http://localhost:8080)  
+  -p, --proxy <proxy>   The proxy to be used (example: http://localhost:8080)
+  -b, --browser <path>  Path to a browser executable to use instead of Chromium   
+```
+
+## Advanced
+
+##### Use Custom Cookies
+
+```bash
+$ node bottok.js -c cookies2.json
+```
+
+##### Use Proxy
+
+```bash
+$ node bottok.js -p http://127.0.0.1:8080
+```
+
+##### Use Custom User-Agent
+
+```bash
+$ node bottok.js -u 'Mozilla/5.0 (iPad; CPU OS 8_4 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12H143 Safari/600.1.4'
+```
+
+##### Use Custom Browser
+
+Path to a browser executable to use instead of the bundled Chromium. 
+Note that Puppeteer is only guaranteed to work with the bundled Chromium, so use this setting at your own risk.
+
+```bash
+$ node bottok.js -b /usr/bin/google-chrome-stable
+```
+or
+```bash
+$ node bottok.js -b 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe'
 ```
 
 ## Premium (No Limitations)
