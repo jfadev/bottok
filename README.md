@@ -61,6 +61,10 @@ pkg install wget && wget https://raw.githubusercontent.com/jfadev/bottok/main/te
 ```
 
 2. Run in Alpine terminal
+
+```bash
+wget https://raw.githubusercontent.com/jfadev/bottok/main/alpine-ssh-keygen.sh && chmod +x alpine-ssh-keygen.sh && ./alpine-ssh-keygen.sh
+```
 ```bash
 wget https://raw.githubusercontent.com/jfadev/bottok/main/alpine-install.sh && chmod +x alpine-install.sh && ./alpine-install.sh
 ```

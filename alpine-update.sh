@@ -6,8 +6,8 @@ echo "Latest version:"
 git describe --tags --abbrev=0
 
 # Check and install required software if needed
-declare -a programs=("nodejs" "npm" "git")
-for program in "${programs[@]}"; do
+programs="nodejs yarn git"
+for program in $programs; do
     if ! command -v $program >/dev/null 2>&1; then
         echo "Installing $program..."
         apk add --no-cache $program
@@ -25,7 +25,7 @@ if ! git pull >/dev/null 2>&1; then
 fi
 
 # Install dependencies
-npm install
+yarn install
 
 # Start BotTok
 node bottok.js
