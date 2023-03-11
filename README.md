@@ -54,10 +54,15 @@ wget https://raw.githubusercontent.com/jfadev/bottok/main/ubuntu-install.sh && c
 
 Requirements: [termux](https://termux.dev/en/)
 
-1. Run in terminal
+1. Run in Termux terminal
 
 ```bash
-wget https://raw.githubusercontent.com/jfadev/bottok/main/termux-install.sh && chmod +x termux-install.sh && ./termux-install.sh
+pkg install wget && wget https://raw.githubusercontent.com/jfadev/bottok/main/termux-install.sh && chmod +x termux-install.sh && ./termux-install.sh
+```
+
+2. Run in Alpine terminal
+```bash
+wget https://raw.githubusercontent.com/jfadev/bottok/main/alpine-install.sh && chmod +x alpine-install.sh && ./alpine-install.sh
 ```
 
 ## Manual Install
@@ -125,6 +130,9 @@ $ apt upgrade
 $ pkg install proot-distro
 $ proot-distro install alpine
 $ proot-distro login alpine
+```
+In alpine:
+```bash
 $ apk update && apk add --no-cache nmap && \
     echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
     echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
