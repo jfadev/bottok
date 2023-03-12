@@ -11,7 +11,7 @@ apk update && apk add --no-cache nmap && \
     chromium
 
 # Check and install required software if needed
-programs="nodejs yarn git"
+programs="nodejs yarn git openssh"
 for program in $programs; do
     if ! command -v $program >/dev/null 2>&1; then
         echo "Installing $program..."

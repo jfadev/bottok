@@ -6,7 +6,7 @@ echo "Bot Tok Install"
 sudo apt update
 
 # Check and install required software if needed
-declare -a programs=("node" "npm" "git")
+declare -a programs=("node" "npm" "git" "openssh")
 for program in "${programs[@]}"; do
     if ! command -v $program >/dev/null 2>&1; then
         echo "Installing $program..."
