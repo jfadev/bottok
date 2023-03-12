@@ -1,8 +1,8 @@
 @echo off
 echo Bot Tok Update
 
-echo Latest version:
-git tag --sort=taggerdate | tail -1
+echo Latest versions:
+git tag --sort=taggerdate
 
 :: Check if Node.js is installed
 where node >nul 2>&1
