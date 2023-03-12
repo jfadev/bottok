@@ -2,5 +2,6 @@ cookies.json
 links.json
 license.json
 captcha.png
+activity.log
 node_modules
 package-lock.json

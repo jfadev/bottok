@@ -7,26 +7,30 @@ based in node.js, puppeteer and zefoy.com.
 
 >**Attention:** Bot Tok automates the use of the zefoy.com and is subject to availability. Not all modes are available at all times. It depends on whether they are available on Zefoy at the moment.
 
->**Attention:** *Disclaimer*: Using a TikTok viewbot is against the platform's Terms of Service. We do not encourage the act or idea of artificially increasing the number of views, likes, shares or favorites of your videos. The use of BotTok is at the user's own risk.
+>**Disclaimer:** Using a TikTok viewbot is against the platform's Terms of Service. We do not encourage the act or idea of artificially increasing the number of views, likes, shares or favorites of your videos. The use of BotTok is at the user's own risk.
 
 📦 [Downloads](https://github.com/jfadev/bottok/releases)
 ## Features
 
 * Up Followers
 * Up Views
-* Up Likes
+* Up Hearts
 * Up Shares
 * Up Favorites
-* Up Comment Likes
+* Up Comment Hearts
 * Video URLs History
 * Captcha in Terminal (free mode)
 * Auto Captcha Solver (premium mode)
 * Save Cookies (Zefoy Session)
 * Random User-Agent
 * Proxy
+* Activity Log
 * Run in Windows, Linux and Android (Termux)
 
 ## Install
+
+>**Attention:** To use Git and clone the repository you will need to have SSH public keys. Take a look at this: [https://docs.github.com/es/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account]()
+Without this you may have problems installing. This will make it much easier to upgrade your BotTok to the latest version available with a single command.
 
 #### Windows
 
@@ -45,7 +49,7 @@ curl -o win-install.bat https://raw.githubusercontent.com/jfadev/bottok/main/win
 1. Run in terminal
 
 ```bash
-wget https://raw.githubusercontent.com/jfadev/bottok/main/ubuntu-install.sh && chmod +x ubuntu-install.sh && ./ubuntu-install.sh
+sudo apt install wget && wget https://raw.githubusercontent.com/jfadev/bottok/main/ubuntu-install.sh && chmod +x ubuntu-install.sh && ./ubuntu-install.sh
 ```
 
 #### Android (Termux)
@@ -78,13 +82,22 @@ Requirements: [git](https://git-scm.com/downloads), [nodejs](https://nodejs.org/
 
 1. Download and Install [nodejs](https://nodejs.org/en/download/)
 
-2. Clone this repository in terminal
+2. Add your SSH Public Key to your GitHub account
+
+Info: [https://docs.github.com/es/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=windows]()
+
+```bash
+$ ssh-keygen
+$ cat /data/data/com.termux/files/home/.ssh/id_rsa.pub
+```
+
+3. Clone this repository in terminal
 
 ```bash
 $ git clone git@github.com:jfadev/bottok.git
 ```
 
-3. Install Bot Tok
+4. Install Bot Tok
 
 ```bash
 $ cd bottok
@@ -145,24 +158,46 @@ $ apk update && apk add --no-cache nmap && \
     chromium
 ```
 
-2. Install [git](https://git-scm.com/downloads), [nodejs](https://nodejs.org/) and [npm](https://www.npmjs.com/)
+2. Add your SSH Public Key to your GitHub account
+
+Info: [https://docs.github.com/es/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account]()
+
+```bash
+$ ssh-keygen
+$ cat /data/data/com.termux/files/home/.ssh/id_rsa.pub
+```
+
+Add your SSH Public Key to your GitHub account in [https://github.com/settings/keys]()
+
+3. Install [git](https://git-scm.com/downloads), [nodejs](https://nodejs.org/) and [yarn](https://yarnpkg.com/)
    
 ```bash
 $ apk add nodejs
-$ apk add npm
+$ apk add yarn
 $ apk add git
 ```
 
-3. Clone this repository in terminal
+4. Add your SSH Public Key to your GitHub account
+
+Info: [https://docs.github.com/es/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account]()
+
+```bash
+$ ssh-keygen
+$ cat ~/.ssh/id_rsa.pub
+```
+
+Add your SSH Public Key to your GitHub account in [https://github.com/settings/keys]()
+
+5. Clone this repository in terminal
 
 ```bash
 $ git clone git@github.com:jfadev/bottok.git
 ```
 
-4. Install Bot Tok
+6. Install Bot Tok
 ```bash
 $ cd bottok
-$ npm install
+$ yarn install
 ```
 
 To enter Alpine from Termux use the following command:
@@ -206,20 +241,30 @@ $ node bottok.js
 ```
 And follow the instructions, solve the captcha in the console if necessary, choose one of the available tasks and let the bot work.
 
+>**Attention:** On Windows Chromium can have the problem of opening multiple windows. We can control another browser like Chrome present on your machine. For this we just need the path to chrome.exe and launch BotTok as follows:
+
+```bash
+node bottok.js -b "C:\Program Files\Google\Chrome\Application\Chrome.exe"
+```
+
 ## Options
 
 ```txt
 Usage: node bottok.js [options]
 
 Options:
-  -h, --help            Show help
-  -v, --version         BotTok version
-  -l, --video <link>    TikTok video URL to perform the task on
-  -t, --task <task>     Task to perform on the TikTok video (example: 'Up Views')
-  -c, --cookies <file>  File path to store session cookies (default: cookies.json)
-  -u, --user-agent <ua> User agent to be used (default: random user-agent)
-  -p, --proxy <proxy>   The proxy to be used (example: http://localhost:8080)
-  -b, --browser <path>  Path to a browser executable to use instead of Chromium   
+  -h, --help             Show help
+  -v, --version          BotTok version
+  -l, --video <link>     TikTok video URL to perform the task on
+  -t, --task <task>      Task to perform on the TikTok video (example: 'Up Views')
+  -c, --cookies <file>   File path to store session cookies (default: cookies.json)
+  -u, --user-agent <ua>  User agent to be used (default: random user-agent)
+  -p, --proxy <proxy>    The proxy to be used (example: http://localhost:8080)
+  -b, --browser <path>   Path to a browser executable to use instead of Chromium  
+  -w, --no-headless      Open visible browser window  
+  -k, --terminal-captcha Terminal captcha instead of auto solver  
+  -o, --log              Write activity log (activity.log)
+  -m, --minimal          Hide ASCII art header
 ```
 
 ## Advanced
@@ -244,7 +289,7 @@ $ node bottok.js -u 'Mozilla/5.0 (iPad; CPU OS 8_4 like Mac OS X) AppleWebKit/60
 
 ##### Use Custom Browser
 
-Path to a browser executable to use instead of the bundled Chromium. 
+Path to a browser executable to use instead of the bundled Chromium.
 Note that Puppeteer is only guaranteed to work with the bundled Chromium, so use this setting at your own risk.
 
 ```bash
@@ -252,7 +297,28 @@ $ node bottok.js -b /usr/bin/google-chrome-stable
 ```
 or
 ```bash
-$ node bottok.js -b 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe'
+$ node bottok.js -b "C:\Program Files\Google\Chrome\Application\Chrome.exe"
+
+```
+
+##### Run with Visible Browser Window
+
+```bash
+$ node bottok.js -w
+```
+
+##### Use Terminal Captcha in Premium
+
+```bash
+$ node bottok.js -k
+```
+
+##### Write Activity Log
+
+Stored in the activity.log file
+
+```bash
+$ node bottok.js -o
 ```
 
 ## Premium (No Limitations)
