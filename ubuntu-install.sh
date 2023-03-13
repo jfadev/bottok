@@ -6,7 +6,7 @@ echo "Bot Tok Install"
 sudo apt update
 
 # Check and install required software if needed
-declare -a programs=("node" "npm" "git" "openssh")
+declare -a programs=("nodejs" "npm" "git" "openssh-client")
 for program in "${programs[@]}"; do
     if ! command -v $program >/dev/null 2>&1; then
         echo "Installing $program..."
@@ -16,6 +16,15 @@ for program in "${programs[@]}"; do
         $program --version
     fi
 done
+
+# Add your SSH Public Key to your GitHub account
+echo "Add your SSH Public Key to your GitHub account"
+
+ssh-keygen
+cat ~/.ssh/id_rsa.pub
+
+echo "Copy its content and paste it into your GitHub account in https://github.com/settings/keys"
+read -p "Once this is done press enter to continue"
 
 # Install BotTok
 echo "Installing BotTok..."

@@ -45,8 +45,18 @@ if %ERRORLEVEL% NEQ 0 (
     git --version
 )
 
+echo Add your SSH Public Key to your GitHub account
+ssh-keygen
+
+echo Open with Notepad.exe the file C:\Users\{your-user}\.ssh\id_rsa.pub,
+echo copy its content and paste it into your GitHub account in https://github.com/settings/keys
+echo Once this is done press enter to continue.
+pause
+
 echo Installing BotTok...
 git clone git@github.com:jfadev/bottok.git
 cd bottok
 npm install
+
+echo Starting BotTok...
 node bottok.js

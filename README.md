@@ -29,16 +29,19 @@ based in node.js, puppeteer and zefoy.com.
 
 ## Install
 
->**Attention:** To use Git and clone the repository you will need to have SSH public keys. Take a look at this: [https://docs.github.com/es/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account]()
+>**Attention:** To use Git and clone the repository you will need to have *SSH Public Key*. Take a look at this: [Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 Without this you may have problems installing. This will make it much easier to upgrade your BotTok to the latest version available with a single command.
 
 #### Windows
+
+![](doc/6.png?raw=true)
+
+First look at [how to add a SSH Public Key](https://medium.com/devops-with-valentine/2021-how-to-set-up-your-ssh-key-for-github-on-windows-10-afe6e729a3c0) in your github account on Windows.
 
 1. Run in terminal
 
 ```bash
 curl -o win-install.bat https://raw.githubusercontent.com/jfadev/bottok/main/win-install.bat & win-install.bat
-
 ```
 
 #### Linux
@@ -56,9 +59,9 @@ sudo apt install wget && wget https://raw.githubusercontent.com/jfadev/bottok/ma
 
 ![](doc/5.png?raw=true)
 
-Requirements: [termux](https://termux.dev/en/)
+Requirements: [termux](https://termux.dev/en/) (install Termux in your Android phone from F-Droid store)
 
-1. Run in Termux terminal
+1. Run in Termux terminal (Install Alpine in Termux)
 
 ```bash
 pkg install wget && wget https://raw.githubusercontent.com/jfadev/bottok/main/termux-install.sh && chmod +x termux-install.sh && ./termux-install.sh
@@ -66,9 +69,6 @@ pkg install wget && wget https://raw.githubusercontent.com/jfadev/bottok/main/te
 
 2. Run in Alpine terminal
 
-```bash
-wget https://raw.githubusercontent.com/jfadev/bottok/main/alpine-ssh-keygen.sh && chmod +x alpine-ssh-keygen.sh && ./alpine-ssh-keygen.sh
-```
 ```bash
 wget https://raw.githubusercontent.com/jfadev/bottok/main/alpine-install.sh && chmod +x alpine-install.sh && ./alpine-install.sh
 ```
@@ -80,28 +80,28 @@ wget https://raw.githubusercontent.com/jfadev/bottok/main/alpine-install.sh && c
 Requirements: [git](https://git-scm.com/downloads), [nodejs](https://nodejs.org/) >=18 (Latest [maintenance LTS](https://github.com/nodejs/Release#release-schedule) version),
  [npm](https://www.npmjs.com/) and [chrome/chromium](https://www.chromium.org/chromium-projects/).
 
-1. Download and Install [nodejs](https://nodejs.org/en/download/)
+1. Install [nodejs](https://nodejs.org/), [npm](https://www.npmjs.com/), [git](https://git-scm.com/downloads)
 
-2. Add your SSH Public Key to your GitHub account
-
-Info: [https://docs.github.com/es/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=windows]()
+2. Add your SSH Public Key to your GitHub account ([more info](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=windows) and [info](https://medium.com/devops-with-valentine/2021-how-to-set-up-your-ssh-key-for-github-on-windows-10-afe6e729a3c0))
 
 ```bash
-$ ssh-keygen
-$ cat /data/data/com.termux/files/home/.ssh/id_rsa.pub
+ssh-keygen
 ```
 
-3. Clone this repository in terminal
+Open with Notepad.exe the file `C:\Users\{your-user}\.ssh\id_rsa.pub`, copy its content and paste it into your GitHub account in [https://github.com/settings/keys](https://github.com/settings/keys)
+
+
+1. Clone this repository in terminal
 
 ```bash
-$ git clone git@github.com:jfadev/bottok.git
+git clone git@github.com:jfadev/bottok.git
 ```
 
 4. Install Bot Tok
 
 ```bash
-$ cd bottok
-$ npm install
+cd bottok
+npm install
 ```
 
 #### Linux
@@ -111,22 +111,32 @@ $ npm install
 Requirements: [git](https://git-scm.com/downloads), [nodejs](https://nodejs.org/) >=18 (Latest [maintenance LTS](https://github.com/nodejs/Release#release-schedule) version),
  [npm](https://www.npmjs.com/) and [chrome/chromium](https://www.chromium.org/chromium-projects/).
 
-
-1. Install [nodejs](https://nodejs.org/)
+1. Install [nodejs](https://nodejs.org/), [npm](https://www.npmjs.com/), [git](https://git-scm.com/downloads) and [openssh](https://www.openssh.com/)
    
 ```bash
 $ sudo apt install nodejs
 $ sudo apt install npm
 $ sudo apt install git
+$ sudo apt install openssh-client
 ```
 
-2. Clone this repository in terminal
+2. Add your SSH Public Key to your GitHub account ([more info](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux))
+
+```bash
+$ ssh-keygen
+$ cat ~/.ssh/id_rsa.pub
+```
+
+Copy its content and paste it into your GitHub account in [https://github.com/settings/keys](https://github.com/settings/keys)
+
+
+3. Clone this repository in terminal
 
 ```bash
 $ git clone git@github.com:jfadev/bottok.git
 ```
 
-3. Install Bot Tok
+4. Install Bot Tok
 ```bash
 $ cd bottok
 $ npm install
@@ -134,7 +144,7 @@ $ npm install
 
 #### Android (Termux)
 
-Requirements: [termux](https://termux.dev/en/)
+Requirements: [termux](https://termux.dev/en/) (install Termux in your Android phone from F-Droid store)
 
 There is no build of Google Chrome available for ARM at this moment, so using chromium instead.
 Installing chromium on Termux directly requires snap which is another big hurdle so alternatively using alpine distro here.
@@ -148,7 +158,8 @@ $ pkg install proot-distro
 $ proot-distro install alpine
 $ proot-distro login alpine
 ```
-In alpine:
+
+2. In alpine install chromium
 ```bash
 $ apk update && apk add --no-cache nmap && \
     echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
@@ -158,49 +169,38 @@ $ apk update && apk add --no-cache nmap && \
     chromium
 ```
 
-2. Add your SSH Public Key to your GitHub account
+3. Install [nodejs](https://nodejs.org/), [yarn](https://yarnpkg.com/), [git](https://git-scm.com/downloads), and [openssh](https://www.openssh.com/)
+   
+```bash
+$ apk add nodejs
+$ apk add yarn
+$ apk add git
+$ apk add openssh
+```
 
-Info: [https://docs.github.com/es/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account]()
+1. Add your SSH Public Key to your GitHub account ([more info](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux))
 
 ```bash
 $ ssh-keygen
 $ cat /data/data/com.termux/files/home/.ssh/id_rsa.pub
 ```
 
-Add your SSH Public Key to your GitHub account in [https://github.com/settings/keys]()
+Copy its content and paste it into your GitHub account in [https://github.com/settings/keys](https://github.com/settings/keys)
 
-3. Install [git](https://git-scm.com/downloads), [nodejs](https://nodejs.org/) and [yarn](https://yarnpkg.com/)
-   
-```bash
-$ apk add nodejs
-$ apk add yarn
-$ apk add git
-```
 
-4. Add your SSH Public Key to your GitHub account
-
-Info: [https://docs.github.com/es/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account]()
-
-```bash
-$ ssh-keygen
-$ cat ~/.ssh/id_rsa.pub
-```
-
-Add your SSH Public Key to your GitHub account in [https://github.com/settings/keys]()
-
-5. Clone this repository in terminal
+4. Clone this repository in terminal
 
 ```bash
 $ git clone git@github.com:jfadev/bottok.git
 ```
 
-6. Install Bot Tok
+5. Install Bot Tok
 ```bash
 $ cd bottok
 $ yarn install
 ```
 
-To enter Alpine from Termux use the following command:
+*Note:* To enter Alpine from Termux with [proot-distro](https://github.com/termux/proot-distro) use the following command:
 ```bash
 $ proot-distro login alpine
 ```
@@ -233,10 +233,14 @@ $ ./ubuntu-update.sh
 $ cd bottok
 $ ./alpine-update.sh
 ```
+*Note:* use `./ubuntu-update.sh` if instead of alpine you decided to use another distro like ubuntu for example.
 
 ## Use
 
+Type the following command in your terminal:
+
 ```bash
+$ cd bottok
 $ node bottok.js
 ```
 And follow the instructions, solve the captcha in the console if necessary, choose one of the available tasks and let the bot work.
@@ -292,13 +296,14 @@ $ node bottok.js -u 'Mozilla/5.0 (iPad; CPU OS 8_4 like Mac OS X) AppleWebKit/60
 Path to a browser executable to use instead of the bundled Chromium.
 Note that Puppeteer is only guaranteed to work with the bundled Chromium, so use this setting at your own risk.
 
+Linux
 ```bash
 $ node bottok.js -b /usr/bin/google-chrome-stable
 ```
-or
+
+Windows
 ```bash
 $ node bottok.js -b "C:\Program Files\Google\Chrome\Application\Chrome.exe"
-
 ```
 
 ##### Run with Visible Browser Window
@@ -309,25 +314,30 @@ $ node bottok.js -w
 
 ##### Use Terminal Captcha in Premium
 
+If the auto captcha solver has problems you can solve the captcha manually.
 ```bash
 $ node bottok.js -k
 ```
 
 ##### Write Activity Log
 
-Stored in the activity.log file
+Stored in the `activity.log` file
 
 ```bash
 $ node bottok.js -o
 ```
+Record structure:
+[`datetime`] [`user-gent`] [`session-id`] [`task`] `total` (+`accumulations`) `URL`
+
+![](doc/7.png?raw=true)
 
 ## Premium (No Limitations)
 
-The FREE version limited to ~5000 accumulations (views, likes, shares, etc...).
+The **FREE** version limited to **~5000** accumulations (views, likes, shares, etc...).
 
 The advantage of acquiring the license is that the bot continues to 
 work indefinitely and accumulates large amounts of views, shares, etc...
-Unlock this limitation by purchasing a license at [here](https://jordifernandes.com/service/bottok)
+Unlock this limitation by purchasing a license at [HERE!](https://jordifernandes.com/service/bottok)
 
 Paste a License Key here:
 

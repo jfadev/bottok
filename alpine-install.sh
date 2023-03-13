@@ -22,6 +22,16 @@ for program in $programs; do
     fi
 done
 
+# Add your SSH Public Key to your GitHub account
+echo "Add your SSH Public Key to your GitHub account"
+
+ssh-keygen
+cat ~/.ssh/id_rsa.pub
+
+echo "Copy its content and paste it into your GitHub account in https://github.com/settings/keys"
+echo "Once this is done press enter to continue"
+read
+
 # Clone Repository
 git clone git@github.com:jfadev/bottok.git
 cd bottok
