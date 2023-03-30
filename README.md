@@ -36,6 +36,8 @@ Without this you may have problems installing. This will make it much easier to 
 
 #### Windows
 
+>**Attention:** Windows Defender may recognize BotTok as a virus. In this case you should temporarily disable the real-time scanning and install it.
+
 First look at [how to add a SSH Public Key](https://medium.com/devops-with-valentine/2021-how-to-set-up-your-ssh-key-for-github-on-windows-10-afe6e729a3c0) in your github account on Windows.
 
 1. Run in terminal
@@ -73,6 +75,8 @@ wget https://raw.githubusercontent.com/jfadev/bottok/main/alpine-install.sh && c
 #### Windows
 
 ![](doc/6.png?raw=true)
+
+>**Attention:** Windows Defender may recognize BotTok as a virus. In this case you should temporarily disable the real-time scanning and install it.
 
 Requirements: [git](https://git-scm.com/downloads), [nodejs](https://nodejs.org/) >=18 (Latest [maintenance LTS](https://github.com/nodejs/Release#release-schedule) version),
  [npm](https://www.npmjs.com/) and [chrome/chromium](https://www.chromium.org/chromium-projects/).
