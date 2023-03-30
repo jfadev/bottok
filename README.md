@@ -19,8 +19,8 @@ based in node.js, puppeteer and zefoy.com.
 * Up Favorites
 * Up Comment Hearts
 * Video URLs History
-* Captcha in Terminal (free mode)
-* Auto Captcha Solver (premium mode)
+* Captcha in Terminal (Free Mode)
+* Auto Captcha Solver (Premium Mode)
 * Save Cookies (Zefoy Session)
 * Random User-Agent
 * Proxy
@@ -32,9 +32,9 @@ based in node.js, puppeteer and zefoy.com.
 >**Attention:** To use Git and clone the repository you will need to have *SSH Public Key*. Take a look at this: [Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 Without this you may have problems installing. This will make it much easier to upgrade your BotTok to the latest version available with a single command.
 
-#### Windows
+>The following installation commands are provided for each operating system. Execute the command corresponding to your OS and follow the instructions, choose the default values by pressing enter or typing Y as appropriate. At some point during the installation a public ssh key will be generated and you will need to paste it into your GitHub account to continue. You can look in this documentation in the manual installation of your OS at the "Add your SSH Public Key" step for more details. After doing this step you will need to press enter on the tarminal to finish the installation. If everything went well BotTok should open.
 
-![](doc/6.png?raw=true)
+#### Windows
 
 First look at [how to add a SSH Public Key](https://medium.com/devops-with-valentine/2021-how-to-set-up-your-ssh-key-for-github-on-windows-10-afe6e729a3c0) in your github account on Windows.
 
@@ -46,9 +46,6 @@ curl -o win-install.bat https://raw.githubusercontent.com/jfadev/bottok/main/win
 
 #### Linux
 
-![](doc/1.png?raw=true)
-
-
 1. Run in terminal
 
 ```bash
@@ -57,14 +54,12 @@ sudo apt install wget && wget https://raw.githubusercontent.com/jfadev/bottok/ma
 
 #### Android (Termux)
 
-![](doc/5.png?raw=true)
-
 Requirements: [termux](https://termux.dev/en/) (install Termux in your Android phone from F-Droid store)
 
 1. Run in Termux terminal (Install Alpine in Termux)
 
 ```bash
-pkg install wget && wget https://raw.githubusercontent.com/jfadev/bottok/main/termux-install.sh && chmod +x termux-install.sh && ./termux-install.sh
+pkg upgrade && pkg install wget && wget https://raw.githubusercontent.com/jfadev/bottok/main/termux-install.sh && chmod +x termux-install.sh && ./termux-install.sh
 ```
 
 2. Run in Alpine terminal
@@ -77,21 +72,25 @@ wget https://raw.githubusercontent.com/jfadev/bottok/main/alpine-install.sh && c
 
 #### Windows
 
+![](doc/6.png?raw=true)
+
 Requirements: [git](https://git-scm.com/downloads), [nodejs](https://nodejs.org/) >=18 (Latest [maintenance LTS](https://github.com/nodejs/Release#release-schedule) version),
  [npm](https://www.npmjs.com/) and [chrome/chromium](https://www.chromium.org/chromium-projects/).
 
-1. Install [nodejs](https://nodejs.org/), [npm](https://www.npmjs.com/), [git](https://git-scm.com/downloads)
+1. Install [nodejs](https://nodejs.org/en/download/), [git](https://git-scm.com/downloads)
 
-2. Add your SSH Public Key to your GitHub account ([more info](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=windows) and [info](https://medium.com/devops-with-valentine/2021-how-to-set-up-your-ssh-key-for-github-on-windows-10-afe6e729a3c0))
+2. Add your SSH Public Key to your GitHub account ([more info](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=windows) and [info](https://medium.com/devops-with-valentine/2021-how-to-set-up-your-ssh-key-for-github-on-windows-10-afe6e729a3c0)). In ssh-keygen use the default values (press enter)
 
 ```bash
 ssh-keygen
 ```
 
-Open with Notepad.exe the file `C:\Users\{your-user}\.ssh\id_rsa.pub`, copy its content and paste it into your GitHub account in [https://github.com/settings/keys](https://github.com/settings/keys)
+Open with Notepad.exe the file `C:\Users\{your-user}\.ssh\id_rsa.pub`, copy its content and paste it into your GitHub account in [https://github.com/settings/ssh/new](https://github.com/settings/ssh/new)
+
+![](doc/8.png?raw=true)
 
 
-1. Clone this repository in terminal
+3. Clone this repository in terminal (fingerprint: yes)
 
 ```bash
 git clone git@github.com:jfadev/bottok.git
@@ -105,6 +104,8 @@ npm install
 ```
 
 #### Linux
+
+![](doc/1.png?raw=true)
 
 🛟 [Install in Linux (Ubuntu) video](https://www.youtube.com/watch?v=1KEFIpNocjs)
 
@@ -120,17 +121,19 @@ $ sudo apt install git
 $ sudo apt install openssh-client
 ```
 
-2. Add your SSH Public Key to your GitHub account ([more info](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux))
+2. Add your SSH Public Key to your GitHub account ([more info](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux)). In ssh-keygen use the default values (press enter)
 
 ```bash
 $ ssh-keygen
 $ cat ~/.ssh/id_rsa.pub
 ```
 
-Copy its content and paste it into your GitHub account in [https://github.com/settings/keys](https://github.com/settings/keys)
+Copy its content and paste it into your GitHub account in [https://github.com/settings/ssh/new](https://github.com/settings/ssh/new)
+
+![](doc/8.png?raw=true)
 
 
-3. Clone this repository in terminal
+3. Clone this repository in terminal (fingerprint: yes)
 
 ```bash
 $ git clone git@github.com:jfadev/bottok.git
@@ -144,6 +147,8 @@ $ npm install
 
 #### Android (Termux)
 
+![](doc/5.png?raw=true)
+
 Requirements: [termux](https://termux.dev/en/) (install Termux in your Android phone from F-Droid store)
 
 There is no build of Google Chrome available for ARM at this moment, so using chromium instead.
@@ -152,6 +157,7 @@ Installing chromium on Termux directly requires snap which is another big hurdle
 1. Install [alpine](https://alpinelinux.org) in termux
 
 ```bash
+$ pkg upgrade
 $ apt update
 $ apt upgrade
 $ pkg install proot-distro
@@ -178,23 +184,25 @@ $ apk add git
 $ apk add openssh
 ```
 
-1. Add your SSH Public Key to your GitHub account ([more info](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux))
+4. Add your SSH Public Key to your GitHub account ([more info](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux)). In ssh-keygen use the default values (press enter)
 
 ```bash
 $ ssh-keygen
-$ cat /data/data/com.termux/files/home/.ssh/id_rsa.pub
+$ cat ~/.ssh/id_rsa.pub
 ```
 
-Copy its content and paste it into your GitHub account in [https://github.com/settings/keys](https://github.com/settings/keys)
+Copy its content and paste it into your GitHub account in [https://github.com/settings/ssh/new](https://github.com/settings/ssh/new)
+
+![](doc/8.png?raw=true)
 
 
-4. Clone this repository in terminal
+5. Clone this repository in terminal (fingerprint: yes)
 
 ```bash
 $ git clone git@github.com:jfadev/bottok.git
 ```
 
-5. Install Bot Tok
+6. Install Bot Tok
 ```bash
 $ cd bottok
 $ yarn install
@@ -296,12 +304,12 @@ $ node bottok.js -u 'Mozilla/5.0 (iPad; CPU OS 8_4 like Mac OS X) AppleWebKit/60
 Path to a browser executable to use instead of the bundled Chromium.
 Note that Puppeteer is only guaranteed to work with the bundled Chromium, so use this setting at your own risk.
 
-Linux
+###### Linux
 ```bash
 $ node bottok.js -b /usr/bin/google-chrome-stable
 ```
 
-Windows
+###### Windows
 ```bash
 $ node bottok.js -b "C:\Program Files\Google\Chrome\Application\Chrome.exe"
 ```
