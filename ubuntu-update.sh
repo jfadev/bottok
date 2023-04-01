@@ -1,32 +1,20 @@
 #!/bin/bash
 
-echo "Bot Tok Update"
+echo "Bot Tok Ubuntu Update"
 
 echo "Latest version:"
 git describe --tags --abbrev=0
 
-# Check and install required software if needed
+echo Check BotTok Dependenties:
 declare -a programs=("nodejs" "npm" "git" "openssh-client")
 for program in "${programs[@]}"; do
-    if ! command -v $program >/dev/null 2>&1; then
-        echo "Installing $program..."
-        sudo apt-get -y install $program
-    else
-        echo "$program already installed."
-        $program --version
-    fi
+    echo $program
+    $program --version
 done
 
-# Update BotTok
 echo "Updating BotTok..."
-# if ! git pull >/dev/null 2>&1; then
-#     echo "BotTok update failed. Please resolve any issues and try again."
-#     exit 1
-# fi
 git pull
-
-# Install dependencies
 npm install
 
-# Start BotTok
+echo Starting BotTok...
 node bottok.js

@@ -1,7 +1,8 @@
 #!/bin/sh
 
-echo "Bot Tok Install"
+echo "Bot Tok Alpine Install"
 
+echo Install BotTok Dependenties:
 # Install Chromium
 apk update && apk add --no-cache nmap && \
     echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
@@ -10,36 +11,30 @@ apk update && apk add --no-cache nmap && \
     apk add --no-cache \
     chromium
 
-# Check and install required software if needed
 programs="nodejs yarn git openssh"
 for program in $programs; do
     if ! command -v $program >/dev/null 2>&1; then
         echo "Installing $program..."
-        apk add --no-cache $program
+        apk add -q --no-cache $program
     else
         echo "$program already installed."
         $program --version
     fi
 done
 
-# Add your SSH Public Key to your GitHub account
 echo "Add your SSH Public Key to your GitHub account"
-
-ssh-keygen
+ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub
 
-echo "Copy its content and paste it into your GitHub account in https://github.com/settings/keys"
+echo "Copy its content and paste it into your GitHub account in:" 
+echo "https://github.com/settings/ssh/new"
 echo "Once this is done press enter to continue"
 read
 
-# Clone Repository
+echo "Installing BotTok..."
 git clone git@github.com:jfadev/bottok.git
 cd bottok
-
-# Install BotTok
-echo "Installing BotTok..."
 yarn install
 
-# Start BotTok
 echo "Starting BotTok..."
 node bottok.js

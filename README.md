@@ -3,7 +3,7 @@
 Bot Tok is an TikTok Up Bot (likes, followers, shares, favorites and views)
 based in node.js, puppeteer and zefoy.com.
 
-🛟 Find help in [Telegram](https://t.me/bottok_help)
+🚨 Find help in [Telegram](https://t.me/bottok_help)
 
 >**Attention:** Bot Tok automates the use of the zefoy.com and is subject to availability. Not all modes are available at all times. It depends on whether they are available on Zefoy at the moment.
 
@@ -36,17 +36,23 @@ Without this you may have problems installing. This will make it much easier to 
 
 #### Windows
 
+📹 [Install in Windows Tutorial](.)
+
 >**Attention:** Windows Defender may recognize BotTok as a virus. In this case you should temporarily disable the real-time scanning and install it.
 
 First look at [how to add a SSH Public Key](https://medium.com/devops-with-valentine/2021-how-to-set-up-your-ssh-key-for-github-on-windows-10-afe6e729a3c0) in your github account on Windows.
 
-1. Run in terminal
+
+1. Save the Windows installer file [win-install.bat](https://raw.githubusercontent.com/jfadev/bottok/main/win-install.bat) to your user folder and run it.
+Or Run in terminal
 
 ```bash
 curl -o win-install.bat https://raw.githubusercontent.com/jfadev/bottok/main/win-install.bat & win-install.bat
 ```
 
 #### Linux
+
+📹 [Install in Linux Tutorial](.)
 
 1. Run in terminal
 
@@ -56,7 +62,9 @@ sudo apt install wget && wget https://raw.githubusercontent.com/jfadev/bottok/ma
 
 #### Android (Termux)
 
-Requirements: [termux](https://termux.dev/en/) (install Termux in your Android phone from F-Droid store)
+📹 [Install in Android Tutorial](https://youtu.be/INFmtshmSM0)
+
+Requirements: [termux](https://termux.dev/en/) (install Termux in your Android phone from F-Droid store, The PlayStore version ins outdated and not work)
 
 1. Run in Termux terminal (Install Alpine in Termux)
 
@@ -111,8 +119,6 @@ npm install
 
 ![](doc/1.png?raw=true)
 
-🛟 [Install in Linux (Ubuntu) video](https://www.youtube.com/watch?v=1KEFIpNocjs)
-
 Requirements: [git](https://git-scm.com/downloads), [nodejs](https://nodejs.org/) >=18 (Latest [maintenance LTS](https://github.com/nodejs/Release#release-schedule) version),
  [npm](https://www.npmjs.com/) and [chrome/chromium](https://www.chromium.org/chromium-projects/).
 
@@ -153,7 +159,7 @@ $ npm install
 
 ![](doc/5.png?raw=true)
 
-Requirements: [termux](https://termux.dev/en/) (install Termux in your Android phone from F-Droid store)
+Requirements: [termux](https://termux.dev/en/) (install Termux in your Android phone from F-Droid store, The PlayStore version ins outdated and not work)
 
 There is no build of Google Chrome available for ARM at this moment, so using chromium instead.
 Installing chromium on Termux directly requires snap which is another big hurdle so alternatively using alpine distro here.
@@ -257,6 +263,8 @@ $ node bottok.js
 ```
 And follow the instructions, solve the captcha in the console if necessary, choose one of the available tasks and let the bot work.
 
+>**Attention:** On Windows you can open BotTok by simply clicking on the `win-bottok.bat` file.
+
 >**Attention:** On Windows Chromium can have the problem of opening multiple windows. We can control another browser like Chrome present on your machine. For this we just need the path to chrome.exe and launch BotTok as follows:
 
 ```bash
@@ -354,6 +362,11 @@ Unlock this limitation by purchasing a license at [HERE!](https://jordifernandes
 Paste a License Key here:
 
 ![](doc/4.png?raw=true)
+
+## Donate
+
+If you want to give a donation for the developers, you can do it here https://jordifernandes.com/donate/
+Thank you very much!!!!
 
 ## Authors
 
