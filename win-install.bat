@@ -12,17 +12,30 @@ if %ERRORLEVEL% NEQ 0 (
     echo Node.js is already installed
     node --version
 )
-
 where git >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
     echo Installing Git...
     powershell -Command "(New-Object System.Net.WebClient).DownloadFile('https://github.com/git-for-windows/git/releases/download/v2.40.0.windows.1/Git-2.40.0-64-bit.exe', 'git-installer.exe')"
     git-installer.exe /VERYSILENT /NORESTART /SP-
     del git-installer.exe
-
 ) else (
     echo Git is already installed
     git --version
+)
+
+where node >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    echo You need to close and open the installer to continue the installation.
+    echo This terminal will close in
+    timeout 10
+    exit
+)
+where git >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    echo You need to close and open the installer to continue the installation.
+    echo This terminal will close in
+    timeout 10
+    exit
 )
 
 echo Add your SSH Public Key to your GitHub account
