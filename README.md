@@ -36,7 +36,7 @@ Without this you may have problems installing. This will make it much easier to 
 
 #### Windows
 
-📹 [Install in Windows Tutorial](.)
+📹 [Install in Windows Tutorial](https://youtu.be/4yvkC38avbs)
 
 >**Attention:** Windows Defender may recognize BotTok as a virus. In this case you should temporarily disable the real-time scanning and install it.
 
@@ -52,7 +52,7 @@ curl -o win-install.bat https://raw.githubusercontent.com/jfadev/bottok/main/win
 
 #### Linux
 
-📹 [Install in Linux Tutorial](.)
+📹 Install in Linux Tutorial (coming soon)
 
 1. Run in terminal
 
