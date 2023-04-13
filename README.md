@@ -9,22 +9,59 @@ based in node.js, puppeteer and zefoy.com.
 
 >**Disclaimer:** Using a TikTok viewbot is against the platform's Terms of Service. We do not encourage the act or idea of artificially increasing the number of views, likes, shares or favorites of your videos. The use of BotTok is at the user's own risk.
 
-📦 [Downloads](https://github.com/jfadev/bottok/releases)
+- [Bot Tok](#bot-tok)
+  - [Features](#features)
+  - [Install](#install)
+      - [Windows](#windows)
+      - [Linux](#linux)
+      - [Android (Termux)](#android-termux)
+  - [Manual Install](#manual-install)
+      - [Windows](#windows-1)
+      - [Linux](#linux-1)
+      - [Android (Termux)](#android-termux-1)
+  - [Update](#update)
+      - [Windows](#windows-2)
+      - [Linux](#linux-2)
+      - [Android (Termux)](#android-termux-2)
+  - [Use](#use)
+  - [Options](#options)
+  - [Advanced](#advanced)
+      - [Run a Task with a Video Directly](#run-a-task-with-a-video-directly)
+      - [Limit Task Accumulations](#limit-task-accumulations)
+      - [Use Custom Cookies](#use-custom-cookies)
+      - [Use Proxy](#use-proxy)
+      - [Use a Random Proxy from a List](#use-a-random-proxy-from-a-list)
+      - [Use Custom User-Agent](#use-custom-user-agent)
+      - [Use Custom Browser](#use-custom-browser)
+      - [Run with Visible Browser Window](#run-with-visible-browser-window)
+      - [Use Terminal Captcha in Premium](#use-terminal-captcha-in-premium)
+      - [Write Activity Log](#write-activity-log)
+  - [Expert](#expert)
+      - [Detach Mode](#detach-mode)
+      - [Multi Task Mode](#multi-task-mode)
+  - [Premium (No Limitations)](#premium-no-limitations)
+  - [Donate](#donate)
+  - [Authors](#authors)
+
 ## Features
 
-* Up Followers
 * Up Views
-* Up Hearts
 * Up Shares
 * Up Favorites
 * Up Comment Hearts
+* Up Hearts (poor availability)
+* Up Followers (poor availability)
 * Video URLs History
 * Captcha in Terminal (Free Mode)
 * Auto Captcha Solver (Premium Mode)
 * Save Cookies (Zefoy Session)
 * Random User-Agent
 * Proxy
+* Random Proxy from List
 * Activity Log
+* Custom Accumulation Limit
+* Multi Task (Premium Mode)
+* Run as a Detach Process (Premium Mode)
 * Run in Windows, Linux and Android (Termux)
 
 ## Install
@@ -43,8 +80,8 @@ Without this you may have problems installing. This will make it much easier to 
 First look at [how to add a SSH Public Key](https://medium.com/devops-with-valentine/2021-how-to-set-up-your-ssh-key-for-github-on-windows-10-afe6e729a3c0) in your github account on Windows.
 
 
-1. Save the Windows installer file [win-install.bat](https://raw.githubusercontent.com/jfadev/bottok/main/win-install.bat) to your user folder and run it.
-Or Run in terminal
+1. Save the Windows installer file [win-install.bat](https://raw.githubusercontent.com/jfadev/bottok/main/win-install.bat) to your user folder and run it,
+or Run in terminal
 
 ```bash
 curl -o win-install.bat https://raw.githubusercontent.com/jfadev/bottok/main/win-install.bat & win-install.bat
@@ -281,65 +318,105 @@ Options:
   -v, --version          BotTok version
   -l, --video <link>     TikTok video URL to perform the task on
   -t, --task <task>      Task to perform on the TikTok video (example: 'Up Views')
-  -c, --cookies <file>   File path to store session cookies (default: cookies.json)
+  -c, --cookies <path>   File path to store session cookies (default: cookies.json)
   -u, --user-agent <ua>  User agent to be used (default: random user-agent)
   -p, --proxy <proxy>    The proxy to be used (example: http://localhost:8080)
+  -s, --proxies <path>   The path of the proxies file to use randomly (default: proxies.txt)
   -b, --browser <path>   Path to a browser executable to use instead of Chromium  
   -w, --no-headless      Open visible browser window  
   -k, --terminal-captcha Terminal captcha instead of auto solver  
   -o, --log              Write activity log (activity.log)
   -m, --minimal          Hide ASCII art header
+  -d, --detach           Output mode for background processes
+  -x, --limit <int>      By the time the accumulation limit is reached
+  -b, --verbose          Display detailed processing information in logs
 ```
 
 ## Advanced
 
-##### Use Custom Cookies
+#### Run a Task with a Video Directly
+
+Set task with `-t` flag (`Up Views`, `Up Shares`, `Up Favorites`) and video url with `-l` flag.
+```bash
+$ node bottok.js -t 'Up Views' -l https://www.tiktok.com/@jfadev/video/7216697213693529349
+```
+
+#### Limit Task Accumulations
+
+Set the limit accumulations value with `-x` flag. The bot will stop when this limit is reached.
+```bash
+$ node bottok.js -t 'Up Views' -x 20000 -l https://www.tiktok.com/@jfadev/video/7216697213693529349
+```
+
+
+#### Use Custom Cookies
 
 ```bash
 $ node bottok.js -c cookies2.json
 ```
 
-##### Use Proxy
+#### Use Proxy
 
+```bash
+$ node bottok.js -p 127.0.0.1:8080
+```
+or
 ```bash
 $ node bottok.js -p http://127.0.0.1:8080
 ```
+or
+```bash
+$ node bottok.js -p user:password@127.0.0.1:8080
+```
+#### Use a Random Proxy from a List
 
-##### Use Custom User-Agent
+```bash
+$ node bottok.js -s proxies.txt
+```
+
+File example:
+```txt
+202.61.204.51:80
+47.91.45.198:8888
+user:password@47.91.45.198:8888
+user2:password2@202.61.204.51:80
+```
+
+#### Use Custom User-Agent
 
 ```bash
 $ node bottok.js -u 'Mozilla/5.0 (iPad; CPU OS 8_4 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12H143 Safari/600.1.4'
 ```
 
-##### Use Custom Browser
+#### Use Custom Browser
 
 Path to a browser executable to use instead of the bundled Chromium.
 Note that Puppeteer is only guaranteed to work with the bundled Chromium, so use this setting at your own risk.
 
-###### Linux
+*Linux*
 ```bash
 $ node bottok.js -b /usr/bin/google-chrome-stable
 ```
 
-###### Windows
+*Windows*
 ```bash
 $ node bottok.js -b "C:\Program Files\Google\Chrome\Application\Chrome.exe"
 ```
 
-##### Run with Visible Browser Window
+#### Run with Visible Browser Window
 
 ```bash
 $ node bottok.js -w
 ```
 
-##### Use Terminal Captcha in Premium
+#### Use Terminal Captcha in Premium
 
 If the auto captcha solver has problems you can solve the captcha manually.
 ```bash
 $ node bottok.js -k
 ```
 
-##### Write Activity Log
+#### Write Activity Log
 
 Stored in the `activity.log` file
 
@@ -350,6 +427,61 @@ Record structure:
 [`datetime`] [`user-gent`] [`session-id`] [`task`] `total` (+`accumulations`) `URL`
 
 ![](doc/7.png?raw=true)
+
+## Expert
+
+#### Detach Mode
+
+With the `-d` or `--detach` flag BotTok manages to work as a background process opening many interesting possibilities.
+
+#### Multi Task Mode
+
+We provide a batch script in both Windows and Linux versions. This batch process reads from the `tasks.csv` file one task per line and launches bottok background processes with one task, one video and a specific accumulation limit in a loop. The number of simultaneous tasks will depend on the resources of your device. Feel free to modify this simple script to suit your needs. 
+
+**Example of tasks.csv:**
+
+Column structure:
+`task`,`limit`,`URL`
+
+Limit 0 = unlimited
+
+![](doc/9.png?raw=true)
+
+```txt
+Up Views,10000,https://www.tiktok.com/@user/video/7218328781327584518
+Up Favorites,500,https://www.tiktok.com/@user/video/7218328781327584518
+Up Shares,1000,https://www.tiktok.com/@user/video/7218328781327584518
+Up Views,50000,https://www.tiktok.com/@user/video/7208664677738450181
+Up Favorites,5000,https://www.tiktok.com/@user/video/7208664677738450181
+Up Shares,2000,https://www.tiktok.com/@user/video/7208664677738450181
+Up Views,0,https://www.tiktok.com/@user/video/7194941936069922053
+Up Favorites,15000,https://www.tiktok.com/@user/video/7194941936069922053
+Up Shares,9000,https://www.tiktok.com/@user/video/7194941936069922053
+```
+
+Edit your `tasks.csv` file and run the batch process `multi-task.sh` or `multi-task.bat`.
+
+*Linux*
+```bash
+$ ./multi-tash.sh
+```
+or with custom tasks file path
+```bash
+$ ./multi-tash.sh tasks.csv
+```
+
+*Windows*
+```bash
+$ multi-task.bat
+```
+or with custom tasks file path
+```bash
+$ multi-task.bat tasks.csv
+```
+![](doc/11.png?raw=true)
+
+Or use the -b or --verbose flags to display more detailed information.
+![](doc/10.png?raw=true)
 
 ## Premium (No Limitations)
 
