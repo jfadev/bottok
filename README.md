@@ -329,7 +329,7 @@ Options:
   -m, --minimal          Hide ASCII art header
   -d, --detach           Output mode for background processes
   -x, --limit <int>      By the time the accumulation limit is reached
-  -b, --verbose          Display detailed processing information in logs
+  -e, --verbose          Display detailed processing information in logs
 ```
 
 ## Advanced
@@ -480,7 +480,7 @@ $ multi-task.bat tasks.csv
 ```
 ![](doc/11.png?raw=true)
 
-Or use the -b or --verbose flags to display more detailed information.
+Or use the -e or --verbose flags to display more detailed information.
 ![](doc/10.png?raw=true)
 
 ## Premium (No Limitations)
