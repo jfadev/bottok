@@ -36,6 +36,11 @@ based in node.js, puppeteer and zefoy.com.
       - [Run with Visible Browser Window](#run-with-visible-browser-window)
       - [Use Terminal Captcha in Premium](#use-terminal-captcha-in-premium)
       - [Write Activity Log](#write-activity-log)
+      - [Set Minimum Accumulation Limit](#set-minimum-accumulation-limit)
+      - [Set Maximum Time Limit](#set-maximum-time-limit)
+      - [Set Initial Accumulation Value](#set-initial-accumulation-value)
+      - [Get Currently Available Tasks](#get-currently-available-tasks)
+      - [Connect to an Existing Browser Instance](#connect-to-an-existing-browser-instance)
   - [Expert](#expert)
       - [Detach Mode](#detach-mode)
       - [Multi Task Mode](#multi-task-mode)
@@ -314,22 +319,28 @@ node bottok.js -b "C:\Program Files\Google\Chrome\Application\Chrome.exe"
 Usage: node bottok.js [options]
 
 Options:
-  -h, --help             Show help
-  -v, --version          BotTok version
-  -l, --video <link>     TikTok video URL to perform the task on
-  -t, --task <task>      Task to perform on the TikTok video (example: 'Up Views')
-  -c, --cookies <path>   File path to store session cookies (default: cookies.json)
-  -u, --user-agent <ua>  User agent to be used (default: random user-agent)
-  -p, --proxy <proxy>    The proxy to be used (example: http://localhost:8080)
-  -s, --proxies <path>   The path of the proxies file to use randomly (default: proxies.txt)
-  -b, --browser <path>   Path to a browser executable to use instead of Chromium  
-  -w, --no-headless      Open visible browser window  
-  -k, --terminal-captcha Terminal captcha instead of auto solver  
-  -o, --log              Write activity log (activity.log)
-  -m, --minimal          Hide ASCII art header
-  -d, --detach           Output mode for background processes
-  -x, --limit <int>      By the time the accumulation limit is reached
-  -e, --verbose          Display detailed processing information in logs
+  -h, --help                Show help
+  -v, --version             BotTok version
+  -l, --video <link>        TikTok video URL to perform the task on
+  -t, --task <task>         Task to perform on the TikTok video (example: 'Up Views')
+  -c, --cookies <path>      File path to store session cookies (default: cookies.json)
+  -u, --user-agent <ua>     User agent to be used (default: random user-agent)
+  -p, --proxy <proxy>       The proxy to be used (example: http://localhost:8080)
+  -s, --proxies <path>      The path of the proxies file to use randomly (default: proxies.txt)
+  -b, --browser <path>      Path to a browser executable to use instead of Chromium  
+  -r, --browser-remote <ws> Set browser WS endpoint to connect to an existing instance
+  -j, --browser-user <path> Set custom user data directory of browser (profile folder)
+  -w, --no-headless         Open visible browser window  
+  -k, --terminal-captcha    Terminal captcha instead of auto solver
+  -o, --log                 Write activity log (activity.log)
+  -m, --minimal             Hide ASCII art header
+  -d, --detach              Output mode for background processes
+  -x, --limit <int>         By the time the accumulation limit is reached
+  -z, --min-limit <int>     If it does not accumulate x amount in 10 minutes it stops
+  -f, --max-time <int>      Sets a maximum time limit in hours before stops
+  -a, --available-tasks     Returns the currently available tasks
+  -i, --init-accums         Set a initial accumulation value (default: 0)
+  -e, --verbose             Display detailed processing information in logs
 ```
 
 ## Advanced
@@ -427,6 +438,64 @@ Record structure:
 [`datetime`] [`user-gent`] [`session-id`] [`task`] `total` (+`accumulations`) `URL`
 
 ![](doc/7.png?raw=true)
+
+Display detailed processing information (verbose) in logs
+
+```bash
+$ node bottok.js -o -e
+```
+
+#### Set Minimum Accumulation Limit
+
+If you don't accumulate x views/favorites/shares in 10 minutes it stops.
+
+```bash
+$ node bottok.js -z 100
+```
+
+#### Set Maximum Time Limit
+
+If the maximum time limit in hours is reached, it stops.
+
+```bash
+$ node bottok.js -f 24
+```
+#### Set Initial Accumulation Value
+
+The counter starts with this value. Useful for resuming tasks.
+
+```bash
+$ node bottok.js -i 500000
+```
+
+#### Get Currently Available Tasks
+
+Returns the currently available tasks.
+
+```bash
+$ node bottok.js -a
+```
+
+Return example:
+```txt
+Up Comments Hearts, Up Views, Up Shares, Up Favorites
+```
+
+#### Connect to an Existing Browser Instance
+
+Open Google Chrome with the flag `--remote-debugging-port=9222`:
+
+```bash
+$ /usr/bin/google-chrome-stable --remote-debugging-port=9222
+```
+
+Open with that browser the following url `http://127.0.0.1:9222/json/version` and retrieve the value of `webSocketDebuggerUrl` for example: `ws://127.0.0.1:9222/devtools/browser/e5095d9d-9095-4be8-a418-cd8a3f4f020a`.
+
+Run BotTok with the `-r` flag:
+
+```bash
+$ node bottok.js -r ws://127.0.0.1:9222/devtools/browser/e5095d9d-9095-4be8-a418-cd8a3f4f020a
+```
 
 ## Expert
 
