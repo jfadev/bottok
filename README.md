@@ -1,13 +1,17 @@
 # Bot Tok
 
-Bot Tok is an TikTok Up Bot (likes, followers, shares, favorites and views)
+>**Attention:** BotTok <u>DOESN'T SEND FOLLOWERS</u>!!!
+
+Bot Tok is an TikTok Up Bot (likes, shares, favorites and views)
 based in node.js, puppeteer and zefoy.com.
 
 🚨 Find help in [Telegram](https://t.me/bottok_help)
 
->**Attention:** Bot Tok automates the use of the zefoy.com and is subject to availability. Not all modes are available at all times. It depends on whether they are available on Zefoy at the moment.
+>**Attention:** Bot Tok automates the use of the zefoy.com and is subject to availability. <u>NOT ALL MODES ARE AVAILABLE AT ALL TIMES</u>. It depends on whether they are available on Zefoy at the moment.
 
->**Disclaimer:** Using a TikTok viewbot is against the platform's Terms of Service. We do not encourage the act or idea of artificially increasing the number of views, likes, shares or favorites of your videos. The use of BotTok is at the user's own risk.
+>**Attention:** Before purchasing a licence key, please use the free version. Please note that due to the nature of this product, we regret to inform you that it <u>CANNOT BE RETURNED OR EXCHANGED</u>. Please consider your purchase decision carefully, as <u>ALL SALES ARE FINAL</u>.
+
+>**Disclaimer:** Using a TikTok viewbot is against the platform's Terms of Service. We do not encourage the act or idea of artificially increasing the number of views, likes, shares or favorites of your videos. <u>The use of BotTok is at the user's own risk</u>.
 
 - [Bot Tok](#bot-tok)
   - [Features](#features)
@@ -40,7 +44,12 @@ based in node.js, puppeteer and zefoy.com.
       - [Set Maximum Time Limit](#set-maximum-time-limit)
       - [Set Initial Accumulation Value](#set-initial-accumulation-value)
       - [Get Currently Available Tasks](#get-currently-available-tasks)
+      - [Get a Session Status](#get-a-session-status)
       - [Connect to an Existing Browser Instance](#connect-to-an-existing-browser-instance)
+      - [Bypass Cloudflare Manually](#bypass-cloudflare-manually)
+        - [Android](#android)
+        - [Linux](#linux-3)
+        - [Windows](#windows-3)
   - [Expert](#expert)
       - [Detach Mode](#detach-mode)
       - [Multi Task Mode](#multi-task-mode)
@@ -50,24 +59,27 @@ based in node.js, puppeteer and zefoy.com.
 
 ## Features
 
-* Up Views
-* Up Shares
-* Up Favorites
-* Up Comment Hearts
-* Up Hearts (poor availability)
-* Up Followers (poor availability)
-* Video URLs History
-* Captcha in Terminal (Free Mode)
-* Auto Captcha Solver (Premium Mode)
-* Save Cookies (Zefoy Session)
-* Random User-Agent
-* Proxy
-* Random Proxy from List
-* Activity Log
-* Custom Accumulation Limit
-* Multi Task (Premium Mode)
-* Run as a Detach Process (Premium Mode)
-* Run in Windows, Linux and Android (Termux)
+✅ Up Views
+✅ Up Shares
+✅ Up Favorites
+✅ Up Comment Hearts
+✅ Up Hearts (poor availability)
+❌ ~~Up Followers (poor availability)~~
+✅ Up Live Stream [VS+LIKES]
+✅ Auto Captcha Solver (Premium & Free Mode)
+✅ Captcha in Terminal (Optional)
+✅ Auto Bypass Cloudflare (Windows & Linux)
+✅ Smart Sessions Management (Cloudlfare & Zefoy Cookies, UA, Proxy)
+✅ Video URLs History
+✅ Random User-Agent
+✅ Proxy
+✅ Random Proxy from List
+✅ Activity Log
+✅ Custom Accumulation Limit
+✅ Run in Windows, Linux and Android (Termux)
+💎 Not limited to ~5000 accumulations (Premium Mode)
+💎 Multi Task (Premium Mode)
+💎 Run as a Detach Process (Premium Mode)
 
 ## Install
 
@@ -336,9 +348,10 @@ Options:
   -m, --minimal             Hide ASCII art header
   -d, --detach              Output mode for background processes
   -x, --limit <int>         By the time the accumulation limit is reached
-  -z, --min-limit <int>     If it does not accumulate x amount in 10 minutes it stops
+  -z, --min-limit <int>     If it does not accumulate x amount in 60 minutes it stops
   -f, --max-time <int>      Sets a maximum time limit in hours before stops
   -a, --available-tasks     Returns the currently available tasks
+  -g, --session-status      Returns the session status
   -i, --init-accums         Set a initial accumulation value (default: 0)
   -e, --verbose             Display detailed processing information in logs
 ```
@@ -447,7 +460,7 @@ $ node bottok.js -o -e
 
 #### Set Minimum Accumulation Limit
 
-If you don't accumulate x views/favorites/shares in 10 minutes it stops.
+If you don't accumulate x views/favorites/shares in 60 minutes it stops.
 
 ```bash
 $ node bottok.js -z 100
@@ -481,6 +494,25 @@ Return example:
 Up Comments Hearts, Up Views, Up Shares, Up Favorites
 ```
 
+#### Get a Session Status
+
+Returns the currently session status.
+
+```bash
+$ node bottok.js -g
+```
+or
+```bash
+$ node bottok.js -g -c cookies2.json
+```
+
+Return status examples:
+```txt
+Cloudflare Valid / Zefoy Expired
+Cloudflare Valid / Zefoy Valid
+Cloudflare Expired / Zefoy Expired
+```
+
 #### Connect to an Existing Browser Instance
 
 Open Google Chrome with the flag `--remote-debugging-port=9222`:
@@ -496,6 +528,50 @@ Run BotTok with the `-r` flag:
 ```bash
 $ node bottok.js -r ws://127.0.0.1:9222/devtools/browser/e5095d9d-9095-4be8-a418-cd8a3f4f020a
 ```
+
+#### Bypass Cloudflare Manually
+
+The Cloudflare bypass on Windows and Linux OS are done automatically but on Android (Termux) you still have to do this process manually. If for some reason the automatic bypass does not work, please follow the instructions below for your OS.
+
+##### Android
+
+1. Open Playstore and install "Kiwi Browser" (chromium-based browser that allows you to install extensions).
+2. Open Kiwi Browser, enter to zefoy.com, pass Cloudflare's protection, solve the captcha.
+3. Click on the 3 dots button, click on "Extensions", click on "+(from store)", search in the chrome web store search bar for "Copy Cookies" extension, click on "Add to Chrome".
+4. In the zefoy tab, click on the 3 dots button, scroll down to the bottom, click on "Copy Cookies". You will see on the screen "Copied".
+5. Open Termux
+6. `$ proot-distro login alpine`
+7. `$ cd bottok`
+8. `$ rm cookies.json`
+9. `$ nano cookies.json`
+10. Click on the screen, and click on "Paste".
+11. Click CTRL, then O, then ENTER.
+12. Click CTRL, then click X.
+13. `$ node bottok.js`
+
+##### Linux
+
+1. Open Chrome, enter to zefoy.com, pass Cloudflare's protection, solve the captcha.
+2. Click on the 3 dots button, click on "Extensions", click on "Visit Chrome Web Store", search in the chrome web store search bar for "Copy Cookies" extension, click on "Add to Chrome".
+3. In the zefoy tab, click on extensions button, click on "Copy Cookies". You will see on the screen "Copied".
+4. Open Terminal
+5. `$ cd bottok`
+6. `$ rm cookies.json`
+7. `$ nano cookies.json`
+8.  Click second mouse button, and click on "Paste".
+9.  Click CTRL, then O, then ENTER.
+10. Click CTRL, then click X.
+11. `$ node bottok.js`
+
+##### Windows
+
+1. Open Chrome, enter to zefoy.com, pass Cloudflare's protection, solve the captcha.
+2. Click on the 3 dots button, click on "Extensions", click on "Visit Chrome Web Store", search in the chrome web store search bar for "Copy Cookies" extension, click on "Add to Chrome".
+3. In the zefoy tab, click on extensions button, click on "Copy Cookies". You will see on the screen "Copied".
+4. Open bottok folder
+5. Edit/Create cookies.json file, Overwrite/Paste with CTRL+V, Save file (create on notepad at bottok file > paste cookies > save notepad > and it will save file name as cookies.txt > rename notepad > change .txt to .json).
+6. Click on `win-bottok.bat`
+
 
 ## Expert
 
@@ -553,6 +629,8 @@ Or use the -e or --verbose flags to display more detailed information.
 ![](doc/10.png?raw=true)
 
 ## Premium (No Limitations)
+
+>**Attention:** Before purchasing a licence key, please use the free version. Please note that due to the nature of this product, we regret to inform you that it <u>CANNOT BE RETURNED OR EXCHANGED</u>. Please consider your purchase decision carefully, as <u>ALL SALES ARE FINAL</u>.
 
 The **FREE** version limited to **~5000** accumulations (views, likes, shares, etc...).
 

@@ -40,6 +40,7 @@ if %ERRORLEVEL% NEQ 0 (
 
 echo Add your SSH Public Key to your GitHub account
 ssh-keygen -t rsa -N "" -f %userprofile%\.ssh\id_rsa
+type %userprofile%\.ssh\id_rsa.pub
 
 echo Open with Notepad.exe the file %userprofile%\.ssh\id_rsa.pub,
 echo copy its content and paste it into your GitHub account in:

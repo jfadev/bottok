@@ -1,7 +1,7 @@
 {
   "name": "bottok",
-  "version": "1.0.8",
-  "description": "Bot Tok is an TikTok Up Bot (likes, followers, shares, favorites and views) based in node.js, puppeteer and zefoy.com.",
+  "version": "1.0.9",
+  "description": "Bot Tok is an TikTok Up Bot (likes, shares, favorites and views) based in node.js, puppeteer and zefoy.com.",
   "type": "module",
   "main": "bottok.js",
   "scripts": {
@@ -16,6 +16,9 @@
   "author": "Jordi Fernandes Alves <jfadev@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "chrome-launcher": "^1.0.0",
+    "chrome-remote-interface": "^0.33.0",
+    "chromium": "^3.0.3",
     "inquirer": "9.1.4",
     "minimist": "1.2.7",
     "puppeteer": "19.8.5",
