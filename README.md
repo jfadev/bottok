@@ -59,27 +59,27 @@ based in node.js, puppeteer and zefoy.com.
 
 ## Features
 
-✅ Up Views
-✅ Up Shares
-✅ Up Favorites
-✅ Up Comment Hearts
-✅ Up Hearts (poor availability)
-❌ ~~Up Followers (poor availability)~~
-✅ Up Live Stream [VS+LIKES]
-✅ Auto Captcha Solver (Premium & Free Mode)
-✅ Captcha in Terminal (Optional)
-✅ Auto Bypass Cloudflare (Windows & Linux)
-✅ Smart Sessions Management (Cloudlfare & Zefoy Cookies, UA, Proxy)
-✅ Video URLs History
-✅ Random User-Agent
-✅ Proxy
-✅ Random Proxy from List
-✅ Activity Log
-✅ Custom Accumulation Limit
-✅ Run in Windows, Linux and Android (Termux)
-💎 Not limited to ~5000 accumulations (Premium Mode)
-💎 Multi Task (Premium Mode)
-💎 Run as a Detach Process (Premium Mode)
+✅ Up Views  
+✅ Up Shares  
+✅ Up Favorites  
+✅ Up Comment Hearts  
+✅ Up Hearts (poor availability)  
+❌ ~~Up Followers (poor availability)~~  
+✅ Up Live Stream [VS+LIKES]  
+✅ Auto Captcha Solver (Premium & Free Mode)  
+✅ Captcha in Terminal (Optional)  
+✅ Auto Bypass Cloudflare (Windows & Linux)  
+✅ Smart Sessions Management (Cloudlfare & Zefoy Cookies, UA, Proxy)  
+✅ Video URLs History  
+✅ Random User-Agent  
+✅ Proxy  
+✅ Random Proxy from List  
+✅ Activity Log  
+✅ Custom Accumulation Limit  
+✅ Run in Windows, Linux and Android (Termux)  
+💎 Not limited to ~5000 accumulations (Premium Mode)  
+💎 Multi Task (Premium Mode)  
+💎 Run as a Detach Process (Premium Mode)  
 
 ## Install
 
