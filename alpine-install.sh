@@ -3,15 +3,17 @@
 echo "Bot Tok Alpine Install"
 
 echo Install BotTok Dependenties:
-# Install Chromium
-apk update && apk add --no-cache nmap && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
-    apk update && \
-    apk add --no-cache \
-    chromium
 
-programs="nodejs yarn git openssh"
+# install OpenSSH
+apk add openssh
+
+# Set Alpine v3.17 repositories
+echo http://nl.alpinelinux.org/alpine/v3.17/community > /etc/apk/repositories
+echo http://nl.alpinelinux.org/alpine/v3.17/main >> /etc/apk/repositories
+apk update
+
+# Install packages
+programs="nmap chromium nodejs yarn git openssh"
 for program in $programs; do
     if ! command -v $program >/dev/null 2>&1; then
         echo "Installing $program..."
@@ -34,7 +36,9 @@ read
 echo "Installing BotTok..."
 git clone git@github.com:jfadev/bottok.git
 cd bottok
-yarn install
+export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+yarn install --network-timeout 6000000
 
 echo "Starting BotTok..."
 node bottok.js

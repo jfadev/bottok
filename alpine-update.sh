@@ -14,7 +14,9 @@ done
 
 echo "Updating BotTok..."
 git pull
-yarn install
+export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+yarn install --network-timeout 6000000
 
 echo "Starting BotTok..."
 node bottok.js
