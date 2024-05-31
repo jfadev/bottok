@@ -39,6 +39,7 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 echo Add your SSH Public Key to your GitHub account
+if not exist %userprofile%\.ssh mkdir %userprofile%\.ssh
 ssh-keygen -t rsa -N "" -f %userprofile%\.ssh\id_rsa
 type %userprofile%\.ssh\id_rsa.pub
 

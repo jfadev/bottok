@@ -3,11 +3,11 @@
 >**Attention:** BotTok <u>DOESN'T SEND FOLLOWERS</u>!!!
 
 Bot Tok is an TikTok Up Bot (likes, shares, favorites and views)
-based in node.js, puppeteer and zefoy.com.
+based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
 
 🚨 Find help in [Telegram](https://t.me/bottok_help)
 
->**Attention:** Bot Tok automates the use of the zefoy.com and is subject to availability. <u>NOT ALL MODES ARE AVAILABLE AT ALL TIMES</u>. It depends on whether they are available on Zefoy at the moment.
+>**Attention:** Bot Tok automates the use of the zefoy.com or freer.es and is subject to availability. <u>NOT ALL MODES ARE AVAILABLE AT ALL TIMES</u>. It depends on whether they are available on provider at the moment.
 
 >**Attention:** Before purchasing a licence key, please use the free version. Please note that due to the nature of this product, we regret to inform you that it <u>CANNOT BE RETURNED OR EXCHANGED</u>. Please consider your purchase decision carefully, as <u>ALL SALES ARE FINAL</u>.
 
@@ -35,10 +35,11 @@ based in node.js, puppeteer and zefoy.com.
       - [Use Custom Cookies](#use-custom-cookies)
       - [Use Proxy](#use-proxy)
       - [Use a Random Proxy from a List](#use-a-random-proxy-from-a-list)
+      - [Filter Proxy from a List by Country](#filter-proxy-from-a-list-by-country)
       - [Use Custom User-Agent](#use-custom-user-agent)
       - [Use Custom Browser](#use-custom-browser)
       - [Run with Visible Browser Window](#run-with-visible-browser-window)
-      - [Use Terminal Captcha in Premium](#use-terminal-captcha-in-premium)
+      - [Use Terminal Captcha](#use-terminal-captcha)
       - [Write Activity Log](#write-activity-log)
       - [Set Minimum Accumulation Limit](#set-minimum-accumulation-limit)
       - [Set Maximum Time Limit](#set-maximum-time-limit)
@@ -59,23 +60,24 @@ based in node.js, puppeteer and zefoy.com.
 
 ## Features
 
-✅ Up Views  
-✅ Up Shares  
-✅ Up Favorites  
-✅ Up Comment Hearts  
-✅ Up Hearts (poor availability)  
-❌ ~~Up Followers (poor availability)~~  
-✅ Up Live Stream [VS+LIKES]  
-✅ Auto Captcha Solver (Premium & Free Mode)  
+✅ Up Views (Zefoy & Freer)   
+✅ Up Shares (Zefoy & Freer)  
+✅ Up Favorites (Zefoy & Freer)  
+✅ Up Comments Hearts (Zefoy & Freer)  
+✅ Up Hearts (Zefoy & Freer)  
+✅ Up Live Stream [VS+LIKES] (Zefoy)  
+✅ Up Live Views (Freer)  
+✅ Auto Captcha Solver  
 ✅ Captcha in Terminal (Optional)  
 ✅ Auto Bypass Cloudflare (Windows & Linux)  
-✅ Smart Sessions Management (Cloudlfare & Zefoy Cookies, UA, Proxy)  
+✅ Smart Sessions Management (Cloudlfare & Zefoy/Freer Cookies, UA, Proxy)  
 ✅ Video URLs History  
 ✅ Random User-Agent  
 ✅ Proxy  
 ✅ Random Proxy from List  
+✅ Filter Proxies by Country  
 ✅ Activity Log  
-✅ Custom Accumulation Limit  
+✅ Custom Accumulation Limit    
 ✅ Run in Windows, Linux and Android (Termux)  
 💎 Not limited to ~5000 accumulations (Premium Mode)  
 💎 Multi Task (Premium Mode)  
@@ -152,6 +154,8 @@ ssh-keygen
 ```
 
 Open with Notepad.exe the file `C:\Users\{your-user}\.ssh\id_rsa.pub`, copy its content and paste it into your GitHub account in [https://github.com/settings/ssh/new](https://github.com/settings/ssh/new)
+
+Note: you may need to create the `.ssh` folder manually in your Windows user folder if it is not created automatically.
 
 ![](doc/8.png?raw=true)
 
@@ -232,8 +236,8 @@ $ proot-distro login alpine
 2. In alpine install chromium
 ```bash
 $ apk update && apk add --no-cache nmap && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
+    echo http://nl.alpinelinux.org/alpine/v3.17/community > /etc/apk/repositories
+    echo http://nl.alpinelinux.org/alpine/v3.17/main >> /etc/apk/repositories
     apk update && \
     apk add --no-cache \
     chromium
@@ -335,10 +339,12 @@ Options:
   -v, --version             BotTok version
   -l, --video <link>        TikTok video URL to perform the task on
   -t, --task <task>         Task to perform on the TikTok video (example: 'Up Views')
+  -q, --provider <prov>     Provider Zefoy or Freer (default: Zefoy)
   -c, --cookies <path>      File path to store session cookies (default: cookies.json)
   -u, --user-agent <ua>     User agent to be used (default: random user-agent)
   -p, --proxy <proxy>       The proxy to be used (example: http://localhost:8080)
   -s, --proxies <path>      The path of the proxies file to use randomly (default: proxies.txt)
+  -n, --proxies-country <c> Filter proxies by country code (example: 'FR' or list 'ES,FR,IT')
   -b, --browser <path>      Path to a browser executable to use instead of Chromium  
   -r, --browser-remote <ws> Set browser WS endpoint to connect to an existing instance
   -j, --browser-user <path> Set custom user data directory of browser (profile folder)
@@ -360,7 +366,7 @@ Options:
 
 #### Run a Task with a Video Directly
 
-Set task with `-t` flag (`Up Views`, `Up Shares`, `Up Favorites`) and video url with `-l` flag.
+Set task with `-t` flag (`Up Views`, `Up Shares`, `Up Favorites`) and video url with `-l` flag. Zefoy is used by default as provider, if you want to use Freer as provider add the `-q 'Freer'` flag.
 ```bash
 $ node bottok.js -t 'Up Views' -l https://www.tiktok.com/@jfadev/video/7216697213693529349
 ```
@@ -392,6 +398,7 @@ or
 ```bash
 $ node bottok.js -p user:password@127.0.0.1:8080
 ```
+
 #### Use a Random Proxy from a List
 
 ```bash
@@ -404,6 +411,17 @@ File example:
 47.91.45.198:8888
 user:password@47.91.45.198:8888
 user2:password2@202.61.204.51:80
+```
+
+#### Filter Proxy from a List by Country
+You can see the list of country codes here [country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+
+```bash
+$ node bottok.js -s proxies.txt -n US
+```
+or
+```bash
+$ node bottok.js -s proxies.txt -n 'US,UK,ES,IT'
 ```
 
 #### Use Custom User-Agent
@@ -433,7 +451,7 @@ $ node bottok.js -b "C:\Program Files\Google\Chrome\Application\Chrome.exe"
 $ node bottok.js -w
 ```
 
-#### Use Terminal Captcha in Premium
+#### Use Terminal Captcha
 
 If the auto captcha solver has problems you can solve the captcha manually.
 ```bash
@@ -512,6 +530,17 @@ Cloudflare Valid / Zefoy Expired
 Cloudflare Valid / Zefoy Valid
 Cloudflare Expired / Zefoy Expired
 ```
+or
+```bash
+$ node bottok.js -g -q Freer -c cookies3.json
+```
+
+Return status examples:
+```txt
+Cloudflare Valid / Freer Expired
+Cloudflare Valid / Freer Valid
+Cloudflare Expired / Freer Expired
+```
 
 #### Connect to an Existing Browser Instance
 
@@ -586,23 +615,25 @@ We provide a batch script in both Windows and Linux versions. This batch process
 **Example of tasks.csv:**
 
 Column structure:
-`task`,`limit`,`URL`
+`task`,`limit`,`URL`,`provider`
 
 Limit 0 = unlimited
 
 ![](doc/9.png?raw=true)
 
 ```txt
-Up Views,10000,https://www.tiktok.com/@user/video/7218328781327584518
-Up Favorites,500,https://www.tiktok.com/@user/video/7218328781327584518
-Up Shares,1000,https://www.tiktok.com/@user/video/7218328781327584518
-Up Views,50000,https://www.tiktok.com/@user/video/7208664677738450181
-Up Favorites,5000,https://www.tiktok.com/@user/video/7208664677738450181
-Up Shares,2000,https://www.tiktok.com/@user/video/7208664677738450181
-Up Views,0,https://www.tiktok.com/@user/video/7194941936069922053
-Up Favorites,15000,https://www.tiktok.com/@user/video/7194941936069922053
-Up Shares,9000,https://www.tiktok.com/@user/video/7194941936069922053
+Up Views,10000,https://www.tiktok.com/@user/video/7218328781327584518,Zefoy
+Up Favorites,500,https://www.tiktok.com/@user/video/7218328781327584518,Zefoy
+Up Shares,1000,https://www.tiktok.com/@user/video/7218328781327584518,Zefoy
+Up Views,50000,https://www.tiktok.com/@user/video/7208664677738450181,Freer
+Up Favorites,5000,https://www.tiktok.com/@user/video/7208664677738450181,Freer
+Up Shares,2000,https://www.tiktok.com/@user/video/7208664677738450181,Zefoy
+Up Views,0,https://www.tiktok.com/@user/video/7194941936069922053,Freer
+Up Favorites,15000,https://www.tiktok.com/@user/video/7194941936069922053,Zefoy
+Up Shares,9000,https://www.tiktok.com/@user/video/7194941936069922053,Zefoy
 ```
+
+Note: you may need an empty line in the last line on some systems.
 
 Edit your `tasks.csv` file and run the batch process `multi-task.sh` or `multi-task.bat`.
 
@@ -632,6 +663,8 @@ Or use the -e or --verbose flags to display more detailed information.
 
 >**Attention:** Before purchasing a licence key, please use the free version. Please note that due to the nature of this product, we regret to inform you that it <u>CANNOT BE RETURNED OR EXCHANGED</u>. Please consider your purchase decision carefully, as <u>ALL SALES ARE FINAL</u>.
 
+>**Attention:** The license key is <u>LIFETIME</u> and you will be able to enjoy all versions.
+
 The **FREE** version limited to **~5000** accumulations (views, likes, shares, etc...).
 
 The advantage of acquiring the license is that the bot continues to 
@@ -639,6 +672,7 @@ work indefinitely and accumulates large amounts of views, shares, etc...
 Unlock this limitation by purchasing a license at [HERE!](https://jordifernandes.com/service/bottok)
 
 Paste a License Key here:
+(Main Menu > License > Add License)
 
 ![](doc/4.png?raw=true)
 
