@@ -60,6 +60,8 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
 
 ## Features
 
+>**Attention:** The features that are with ❌ are integrated in the bot <u>BUT ARE PRACTICALLY NEVER AVAILABLE IN THE PROVIDERS</u>!
+
 ✅ Up Views (Zefoy & Freer)   
 ✅ Up Shares (Zefoy & Freer)  
 ✅ Up Favorites (Zefoy & Freer)  
