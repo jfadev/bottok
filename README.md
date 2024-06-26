@@ -64,9 +64,9 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
 ✅ Up Shares (Zefoy & Freer)  
 ✅ Up Favorites (Zefoy & Freer)  
 ✅ Up Comments Hearts (Zefoy & Freer)  
-✅ Up Hearts (Zefoy & Freer)  
-✅ Up Live Stream [VS+LIKES] (Zefoy)  
-✅ Up Live Views (Freer)  
+❌ Up Hearts (Zefoy & Freer)  
+❌ Up Live Stream [VS+LIKES] (Zefoy)  
+❌ Up Live Views (Freer)  
 ✅ Auto Captcha Solver  
 ✅ Captcha in Terminal (Optional)  
 ✅ Auto Bypass Cloudflare (Windows & Linux)  
