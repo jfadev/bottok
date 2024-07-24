@@ -1,12 +1,14 @@
 # Bot Tok
 
->**Attention:** BotTok <u>DOESN'T SEND FOLLOWERS</u>!!!
+>**Attention:** Bot Tok operates using the Zefoy and Freer platforms. Temporary interruptions in services such as views, shares, favorites, and others may occur on these platforms. These interruptions are not caused by our software and do not imply a permanent failure.
 
 Bot Tok is an TikTok Up Bot (likes, shares, favorites and views)
 based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
 
 🚨 Find help in [Telegram](https://t.me/bottok_help)
 
+>**Attention:** BotTok <u>DOESN'T SEND FOLLOWERS</u>!!!
+>
 >**Attention:** Bot Tok automates the use of the zefoy.com or freer.es and is subject to availability. <u>NOT ALL MODES ARE AVAILABLE AT ALL TIMES</u>. It depends on whether they are available on provider at the moment.
 
 >**Attention:** Before purchasing a licence key, please use the free version. Please note that due to the nature of this product, we regret to inform you that it <u>CANNOT BE RETURNED OR EXCHANGED</u>. Please consider your purchase decision carefully, as <u>ALL SALES ARE FINAL</u>.
