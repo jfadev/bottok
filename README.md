@@ -1,6 +1,7 @@
 # Bot Tok
 
->**Attention:** Bot Tok operates using the Zefoy and Freer platforms. Temporary interruptions in services such as views, shares, favorites, and others may occur on these platforms. These interruptions are not caused by our software and do not imply a permanent failure.
+>**Attention:** Bot Tok operates using the Zefoy and Freer platforms. Temporary interruptions in services such as views, shares, favorites, and others may occur on these platforms. These interruptions are not caused by our software and do not imply a permanent failure. 
+We want to clarify that these outages are temporary and services will be restored once Zefoy and Freer resolve the issues. This is important and relevant information for all new Bot Tok users.
 
 Bot Tok is an TikTok Up Bot (likes, shares, favorites and views)
 based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
