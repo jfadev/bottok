@@ -47,6 +47,7 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
       - [Set Minimum Accumulation Limit](#set-minimum-accumulation-limit)
       - [Set Maximum Time Limit](#set-maximum-time-limit)
       - [Set Initial Accumulation Value](#set-initial-accumulation-value)
+      - [Set Retry Timeout Value](#set-retry-timeout-value)
       - [Get Currently Available Tasks](#get-currently-available-tasks)
       - [Get a Session Status](#get-a-session-status)
       - [Connect to an Existing Browser Instance](#connect-to-an-existing-browser-instance)
@@ -365,6 +366,7 @@ Options:
   -g, --session-status      Returns the session status
   -i, --init-accums         Set a initial accumulation value (default: 0)
   -e, --verbose             Display detailed processing information in logs
+  -rt, --retry-timeout      Waiting trying again timeout in minutes (default: 1)
 ```
 
 ## Advanced
@@ -502,6 +504,14 @@ The counter starts with this value. Useful for resuming tasks.
 
 ```bash
 $ node bottok.js -i 500000
+```
+
+#### Set Retry Timeout Value
+
+The timeout period in minutes before retrying a failed attempt. Useful for controlling the retry intervals.
+
+```bash
+$ node bottok.js -rt 5
 ```
 
 #### Get Currently Available Tasks
