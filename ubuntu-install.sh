@@ -2,7 +2,7 @@
 
 echo "Bot Tok Ubuntu Install"
 
-echo Install BotTok Dependenties:
+echo "Install BotTok Dependenties:"
 sudo apt update
 declare -a programs=("nodejs" "npm" "git" "openssh-client")
 for program in "${programs[@]}"; do

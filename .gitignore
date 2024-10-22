@@ -8,3 +8,5 @@ activity.log
 node_modules
 package-lock.json
 yarn.json
+tasks.csv
+proxies.txt
