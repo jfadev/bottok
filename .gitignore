@@ -7,6 +7,6 @@ captcha.png
 activity.log
 node_modules
 package-lock.json
-yarn.json
+yarn.lock
 tasks.csv
 proxies.txt

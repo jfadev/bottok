@@ -48,6 +48,9 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
       - [Set Maximum Time Limit](#set-maximum-time-limit)
       - [Set Initial Accumulation Value](#set-initial-accumulation-value)
       - [Set Retry Timeout Value](#set-retry-timeout-value)
+      - [Set Comment Hearts quantity](#set-comment-hearts-quantity)
+      - [Filter Comments by Text](#filter-comments-by-text)
+      - [Filter Comments by Author](#filter-comments-by-author)
       - [Get Currently Available Tasks](#get-currently-available-tasks)
       - [Get a Session Status](#get-a-session-status)
       - [Connect to an Existing Browser Instance](#connect-to-an-existing-browser-instance)
@@ -55,6 +58,10 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
         - [Android](#android)
         - [Linux](#linux-3)
         - [Windows](#windows-3)
+      - [Trick to avoid being banned on Freer captcha](#trick-to-avoid-being-banned-on-freer-captcha)
+        - [Android](#android-1)
+        - [Linux](#linux-4)
+        - [Windows](#windows-4)
   - [Expert](#expert)
       - [Detach Mode](#detach-mode)
       - [Multi Task Mode](#multi-task-mode)
@@ -71,7 +78,7 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
 ✅ Up Favorites (Zefoy & Freer)  
 ✅ Up Comments Hearts (Zefoy & Freer)  
 ❌ Up Hearts (Zefoy & Freer)  
-❌ Up Live Stream [VS+LIKES] (Zefoy)  
+❌ Up Live Stream (Zefoy)  
 ❌ Up Live Views (Freer)  
 ✅ Auto Captcha Solver  
 ✅ Captcha in Terminal (Optional)  
@@ -83,9 +90,9 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
 ✅ Random Proxy from List  
 ✅ Filter Proxies by Country  
 ✅ Activity Log  
-✅ Custom Accumulation Limit    
+✅ Custom Accumulation Limit
 ✅ Run in Windows, Linux and Android (Termux)  
-💎 Not limited to ~5000 accumulations (Premium Mode)  
+💎 Not limited accumulations (Premium Mode)  
 💎 Multi Task (Premium Mode)  
 💎 Run as a Detach Process (Premium Mode)  
 
@@ -189,17 +196,17 @@ Requirements: [git](https://git-scm.com/downloads), [nodejs](https://nodejs.org/
 1. Install [nodejs](https://nodejs.org/), [npm](https://www.npmjs.com/), [git](https://git-scm.com/downloads) and [openssh](https://www.openssh.com/)
    
 ```bash
-$ sudo apt install nodejs
-$ sudo apt install npm
-$ sudo apt install git
-$ sudo apt install openssh-client
+sudo apt install nodejs
+sudo apt install npm
+sudo apt install git
+sudo apt install openssh-client
 ```
 
 2. Add your SSH Public Key to your GitHub account ([more info](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux)). In ssh-keygen use the default values (press enter)
 
 ```bash
-$ ssh-keygen
-$ cat ~/.ssh/id_rsa.pub
+ssh-keygen
+cat ~/.ssh/id_rsa.pub
 ```
 
 Copy its content and paste it into your GitHub account in [https://github.com/settings/ssh/new](https://github.com/settings/ssh/new)
@@ -210,13 +217,13 @@ Copy its content and paste it into your GitHub account in [https://github.com/se
 3. Clone this repository in terminal (fingerprint: yes)
 
 ```bash
-$ git clone git@github.com:jfadev/bottok.git
+git clone git@github.com:jfadev/bottok.git
 ```
 
 4. Install Bot Tok
 ```bash
-$ cd bottok
-$ npm install
+cd bottok
+npm install
 ```
 
 #### Android (Termux)
@@ -231,17 +238,17 @@ Installing chromium on Termux directly requires snap which is another big hurdle
 1. Install [alpine](https://alpinelinux.org) in termux
 
 ```bash
-$ pkg upgrade
-$ apt update
-$ apt upgrade
-$ pkg install proot-distro
-$ proot-distro install alpine
-$ proot-distro login alpine
+pkg upgrade
+apt update
+apt upgrade
+pkg install proot-distro
+proot-distro install alpine
+proot-distro login alpine
 ```
 
 2. In alpine install chromium
 ```bash
-$ apk update && apk add --no-cache nmap && \
+apk update && apk add --no-cache nmap && \
     echo http://nl.alpinelinux.org/alpine/v3.17/community > /etc/apk/repositories
     echo http://nl.alpinelinux.org/alpine/v3.17/main >> /etc/apk/repositories
     apk update && \
@@ -252,17 +259,17 @@ $ apk update && apk add --no-cache nmap && \
 3. Install [nodejs](https://nodejs.org/), [yarn](https://yarnpkg.com/), [git](https://git-scm.com/downloads), and [openssh](https://www.openssh.com/)
    
 ```bash
-$ apk add nodejs
-$ apk add yarn
-$ apk add git
-$ apk add openssh
+apk add nodejs
+apk add yarn
+apk add git
+apk add openssh
 ```
 
 4. Add your SSH Public Key to your GitHub account ([more info](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux)). In ssh-keygen use the default values (press enter)
 
 ```bash
-$ ssh-keygen
-$ cat ~/.ssh/id_rsa.pub
+ssh-keygen
+cat ~/.ssh/id_rsa.pub
 ```
 
 Copy its content and paste it into your GitHub account in [https://github.com/settings/ssh/new](https://github.com/settings/ssh/new)
@@ -273,18 +280,18 @@ Copy its content and paste it into your GitHub account in [https://github.com/se
 5. Clone this repository in terminal (fingerprint: yes)
 
 ```bash
-$ git clone git@github.com:jfadev/bottok.git
+git clone git@github.com:jfadev/bottok.git
 ```
 
 6. Install Bot Tok
 ```bash
-$ cd bottok
-$ yarn install
+cd bottok
+yarn install
 ```
 
 *Note:* To enter Alpine from Termux with [proot-distro](https://github.com/termux/proot-distro) use the following command:
 ```bash
-$ proot-distro login alpine
+proot-distro login alpine
 ```
 
 ## Update
@@ -294,8 +301,8 @@ $ proot-distro login alpine
 1. Run in terminal
 
 ```bash
-$ cd bottok
-$ win-update.bat
+cd bottok
+win-update.bat
 ```
 
 #### Linux
@@ -303,8 +310,8 @@ $ win-update.bat
 1. Run in terminal
 
 ```bash
-$ cd bottok
-$ ./ubuntu-update.sh
+cd bottok
+./ubuntu-update.sh
 ```
 
 #### Android (Termux)
@@ -312,8 +319,8 @@ $ ./ubuntu-update.sh
 1. Run in terminal
 
 ```bash
-$ cd bottok
-$ ./alpine-update.sh
+cd bottok
+./alpine-update.sh
 ```
 *Note:* use `./ubuntu-update.sh` if instead of alpine you decided to use another distro like ubuntu for example.
 
@@ -322,8 +329,8 @@ $ ./alpine-update.sh
 Type the following command in your terminal:
 
 ```bash
-$ cd bottok
-$ node bottok.js
+cd bottok
+node bottok.js
 ```
 And follow the instructions, solve the captcha in the console if necessary, choose one of the available tasks and let the bot work.
 
@@ -366,7 +373,10 @@ Options:
   -g, --session-status      Returns the session status
   -i, --init-accums         Set a initial accumulation value (default: 0)
   -e, --verbose             Display detailed processing information in logs
-  -rt, --retry-timeout      Waiting trying again timeout in minutes (default: 1)
+  -R, --retry-timeout       Waiting trying again timeout in minutes (default: 1)
+  -H, --c-hearts-qty <int>  Set the number of hearts to send to the comment (25, 50 or 100)
+  -T, --c-text-filter <str> Filter comments by comment text
+  -U, --c-user-filter <str> Filter comments by comment author
 ```
 
 ## Advanced
@@ -375,41 +385,41 @@ Options:
 
 Set task with `-t` flag (`Up Views`, `Up Shares`, `Up Favorites`) and video url with `-l` flag. Zefoy is used by default as provider, if you want to use Freer as provider add the `-q 'Freer'` flag.
 ```bash
-$ node bottok.js -t 'Up Views' -l https://www.tiktok.com/@jfadev/video/7216697213693529349
+node bottok.js -t 'Up Views' -l https://www.tiktok.com/@jfadev/video/7216697213693529349
 ```
 
 #### Limit Task Accumulations
 
 Set the limit accumulations value with `-x` flag. The bot will stop when this limit is reached.
 ```bash
-$ node bottok.js -t 'Up Views' -x 20000 -l https://www.tiktok.com/@jfadev/video/7216697213693529349
+node bottok.js -t 'Up Views' -x 20000 -l https://www.tiktok.com/@jfadev/video/7216697213693529349
 ```
 
 
 #### Use Custom Cookies
 
 ```bash
-$ node bottok.js -c cookies2.json
+node bottok.js -c cookies2.json
 ```
 
 #### Use Proxy
 
 ```bash
-$ node bottok.js -p 127.0.0.1:8080
+node bottok.js -p 127.0.0.1:8080
 ```
 or
 ```bash
-$ node bottok.js -p http://127.0.0.1:8080
+node bottok.js -p http://127.0.0.1:8080
 ```
 or
 ```bash
-$ node bottok.js -p user:password@127.0.0.1:8080
+node bottok.js -p user:password@127.0.0.1:8080
 ```
 
 #### Use a Random Proxy from a List
 
 ```bash
-$ node bottok.js -s proxies.txt
+node bottok.js -s proxies.txt
 ```
 
 File example:
@@ -424,17 +434,17 @@ user2:password2@202.61.204.51:80
 You can see the list of country codes here [country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 
 ```bash
-$ node bottok.js -s proxies.txt -n US
+node bottok.js -s proxies.txt -n US
 ```
 or
 ```bash
-$ node bottok.js -s proxies.txt -n 'US,UK,ES,IT'
+node bottok.js -s proxies.txt -n 'US,UK,ES,IT'
 ```
 
 #### Use Custom User-Agent
 
 ```bash
-$ node bottok.js -u 'Mozilla/5.0 (iPad; CPU OS 8_4 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12H143 Safari/600.1.4'
+node bottok.js -u 'Mozilla/5.0 (iPad; CPU OS 8_4 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12H143 Safari/600.1.4'
 ```
 
 #### Use Custom Browser
@@ -444,25 +454,25 @@ Note that Puppeteer is only guaranteed to work with the bundled Chromium, so use
 
 *Linux*
 ```bash
-$ node bottok.js -b /usr/bin/google-chrome-stable
+node bottok.js -b /usr/bin/google-chrome-stable
 ```
 
 *Windows*
 ```bash
-$ node bottok.js -b "C:\Program Files\Google\Chrome\Application\Chrome.exe"
+node bottok.js -b "C:\Program Files\Google\Chrome\Application\Chrome.exe"
 ```
 
 #### Run with Visible Browser Window
 
 ```bash
-$ node bottok.js -w
+node bottok.js -w
 ```
 
 #### Use Terminal Captcha
 
 If the auto captcha solver has problems you can solve the captcha manually.
 ```bash
-$ node bottok.js -k
+node bottok.js -k
 ```
 
 #### Write Activity Log
@@ -470,7 +480,7 @@ $ node bottok.js -k
 Stored in the `activity.log` file
 
 ```bash
-$ node bottok.js -o
+node bottok.js -o
 ```
 Record structure:
 [`datetime`] [`user-gent`] [`session-id`] [`task`] `total` (+`accumulations`) `URL`
@@ -480,7 +490,7 @@ Record structure:
 Display detailed processing information (verbose) in logs
 
 ```bash
-$ node bottok.js -o -e
+node bottok.js -o -e
 ```
 
 #### Set Minimum Accumulation Limit
@@ -488,7 +498,7 @@ $ node bottok.js -o -e
 If you don't accumulate x views/favorites/shares in 60 minutes it stops.
 
 ```bash
-$ node bottok.js -z 100
+node bottok.js -z 100
 ```
 
 #### Set Maximum Time Limit
@@ -496,14 +506,14 @@ $ node bottok.js -z 100
 If the maximum time limit in hours is reached, it stops.
 
 ```bash
-$ node bottok.js -f 24
+node bottok.js -f 24
 ```
 #### Set Initial Accumulation Value
 
 The counter starts with this value. Useful for resuming tasks.
 
 ```bash
-$ node bottok.js -i 500000
+node bottok.js -i 500000
 ```
 
 #### Set Retry Timeout Value
@@ -511,7 +521,33 @@ $ node bottok.js -i 500000
 The timeout period in minutes before retrying a failed attempt. Useful for controlling the retry intervals.
 
 ```bash
-$ node bottok.js -rt 5
+node bottok.js -R 5
+```
+
+#### Set Comment Hearts quantity
+
+Set the number of hearts to send to the comment (25, 50 or 100).
+Only work with Zefoy.
+
+```bash
+node bottok.js -H 100
+```
+
+
+#### Filter Comments by Text
+
+List only comments that contain this text.
+
+```bash
+node bottok.js -T 'hello' 
+```
+
+#### Filter Comments by Author
+
+List only those comments where the author's name contains this text.
+
+```bash
+node bottok.js -U 'jfadev'
 ```
 
 #### Get Currently Available Tasks
@@ -519,7 +555,7 @@ $ node bottok.js -rt 5
 Returns the currently available tasks.
 
 ```bash
-$ node bottok.js -a
+node bottok.js -a
 ```
 
 Return example:
@@ -532,11 +568,11 @@ Up Comments Hearts, Up Views, Up Shares, Up Favorites
 Returns the currently session status.
 
 ```bash
-$ node bottok.js -g
+node bottok.js -g
 ```
 or
 ```bash
-$ node bottok.js -g -c cookies2.json
+node bottok.js -g -c cookies2.json
 ```
 
 Return status examples:
@@ -547,7 +583,7 @@ Cloudflare Expired / Zefoy Expired
 ```
 or
 ```bash
-$ node bottok.js -g -q Freer -c cookies3.json
+node bottok.js -g -q Freer -c cookies3.json
 ```
 
 Return status examples:
@@ -562,7 +598,7 @@ Cloudflare Expired / Freer Expired
 Open Google Chrome with the flag `--remote-debugging-port=9222`:
 
 ```bash
-$ /usr/bin/google-chrome-stable --remote-debugging-port=9222
+/usr/bin/google-chrome-stable --remote-debugging-port=9222
 ```
 
 Open with that browser the following url `http://127.0.0.1:9222/json/version` and retrieve the value of `webSocketDebuggerUrl` for example: `ws://127.0.0.1:9222/devtools/browser/e5095d9d-9095-4be8-a418-cd8a3f4f020a`.
@@ -570,7 +606,7 @@ Open with that browser the following url `http://127.0.0.1:9222/json/version` an
 Run BotTok with the `-r` flag:
 
 ```bash
-$ node bottok.js -r ws://127.0.0.1:9222/devtools/browser/e5095d9d-9095-4be8-a418-cd8a3f4f020a
+node bottok.js -r ws://127.0.0.1:9222/devtools/browser/e5095d9d-9095-4be8-a418-cd8a3f4f020a
 ```
 
 #### Bypass Cloudflare Manually
@@ -579,19 +615,22 @@ The Cloudflare bypass on Windows and Linux OS are done automatically but on Andr
 
 ##### Android
 
+>**Attention:** Kiwi Browser has been discontinued and is no longer available on the Play Store. However, you can still download the latest APK from APKPure at:
+https://apkpure.com/kiwi-browser-fast-quiet/com.kiwibrowser.browser
+
 1. Open Playstore and install "Kiwi Browser" (chromium-based browser that allows you to install extensions).
 2. Open Kiwi Browser, enter to zefoy.com, pass Cloudflare's protection, solve the captcha.
 3. Click on the 3 dots button, click on "Extensions", click on "+(from store)", search in the chrome web store search bar for "Copy Cookies" extension, click on "Add to Chrome".
 4. In the zefoy tab, click on the 3 dots button, scroll down to the bottom, click on "Copy Cookies". You will see on the screen "Copied".
 5. Open Termux
-6. `$ proot-distro login alpine`
-7. `$ cd bottok`
-8. `$ rm cookies.json`
-9. `$ nano cookies.json`
+6. `proot-distro login alpine`
+7. `cd bottok`
+8. `rm cookies.json`
+9. `nano cookies.json`
 10. Click on the screen, and click on "Paste".
 11. Click CTRL, then O, then ENTER.
 12. Click CTRL, then click X.
-13. `$ node bottok.js`
+13. `node bottok.js`
 
 ##### Linux
 
@@ -599,13 +638,13 @@ The Cloudflare bypass on Windows and Linux OS are done automatically but on Andr
 2. Click on the 3 dots button, click on "Extensions", click on "Visit Chrome Web Store", search in the chrome web store search bar for "Copy Cookies" extension, click on "Add to Chrome".
 3. In the zefoy tab, click on extensions button, click on "Copy Cookies". You will see on the screen "Copied".
 4. Open Terminal
-5. `$ cd bottok`
-6. `$ rm cookies.json`
-7. `$ nano cookies.json`
+5. `cd bottok`
+6. `rm cookies.json`
+7. `nano cookies.json`
 8.  Click second mouse button, and click on "Paste".
 9.  Click CTRL, then O, then ENTER.
 10. Click CTRL, then click X.
-11. `$ node bottok.js`
+11. `node bottok.js`
 
 ##### Windows
 
@@ -614,6 +653,53 @@ The Cloudflare bypass on Windows and Linux OS are done automatically but on Andr
 3. In the zefoy tab, click on extensions button, click on "Copy Cookies". You will see on the screen "Copied".
 4. Open bottok folder
 5. Edit/Create cookies.json file, Overwrite/Paste with CTRL+V, Save file (create on notepad at bottok file > paste cookies > save notepad > and it will save file name as cookies.txt > rename notepad > change .txt to .json).
+6. Click on `win-bottok.bat`
+
+
+#### Trick to avoid being banned on Freer captcha
+
+Freer's captcha may block your IP after multiple failed attempts. To prevent this, the safest approach is to bypass the automatic solver and manually paste the previously generated cookies.
+
+##### Android
+
+>**Attention:** Kiwi Browser has been discontinued and is no longer available on the Play Store. However, you can still download the latest APK from APKPure at:
+https://apkpure.com/kiwi-browser-fast-quiet/com.kiwibrowser.browser
+
+1. Open Playstore and install "Kiwi Browser" (chromium-based browser that allows you to install extensions).
+2. Open Kiwi Browser, enter to nreer.com, solve the captcha.
+3. Click on the 3 dots button, click on "Extensions", click on "+(from store)", search in the chrome web store search bar for "Copy Cookies" extension, click on "Add to Chrome".
+4. In the freer tab, click on the 3 dots button, scroll down to the bottom, click on "Copy Cookies". You will see on the screen "Copied".
+5. Open Termux
+6. `proot-distro login alpine`
+7. `cd bottok`
+8. `rm cookies2.json`
+9. `nano cookies2.json`
+10. Click on the screen, and click on "Paste".
+11. Click CTRL, then O, then ENTER.
+12. Click CTRL, then click X.
+13. `node bottok.js`
+
+##### Linux
+
+1. Open Chrome, enter to nreer.com, solve the captcha.
+2. Click on the 3 dots button, click on "Extensions", click on "Visit Chrome Web Store", search in the chrome web store search bar for "Copy Cookies" extension, click on "Add to Chrome".
+3. In the freer tab, click on extensions button, click on "Copy Cookies". You will see on the screen "Copied".
+4. Open Terminal
+5. `cd bottok`
+6. `rm cookies2.json`
+7. `nano cookies2.json`
+8.  Click second mouse button, and click on "Paste".
+9.  Click CTRL, then O, then ENTER.
+10. Click CTRL, then click X.
+11. `node bottok.js`
+
+##### Windows
+
+1. Open Chrome, enter to nreer.com, solve the captcha.
+2. Click on the 3 dots button, click on "Extensions", click on "Visit Chrome Web Store", search in the chrome web store search bar for "Copy Cookies" extension, click on "Add to Chrome".
+3. In the freer tab, click on extensions button, click on "Copy Cookies". You will see on the screen "Copied".
+4. Open bottok folder
+5. Edit/Create cookies2.json file, Overwrite/Paste with CTRL+V, Save file (create on notepad at bottok file > paste cookies > save notepad > and it will save file name as cookies2.txt > rename notepad > change .txt to .json).
 6. Click on `win-bottok.bat`
 
 
@@ -654,20 +740,20 @@ Edit your `tasks.csv` file and run the batch process `multi-task.sh` or `multi-t
 
 *Linux*
 ```bash
-$ ./multi-tash.sh
+./multi-tash.sh
 ```
 or with custom tasks file path
 ```bash
-$ ./multi-tash.sh tasks.csv
+./multi-tash.sh tasks.csv
 ```
 
 *Windows*
 ```bash
-$ multi-task.bat
+multi-task.bat
 ```
 or with custom tasks file path
 ```bash
-$ multi-task.bat tasks.csv
+multi-task.bat tasks.csv
 ```
 ![](doc/11.png?raw=true)
 
@@ -680,7 +766,7 @@ Or use the -e or --verbose flags to display more detailed information.
 
 >**Attention:** The license key is <u>LIFETIME</u> and you will be able to enjoy all versions.
 
-The **FREE** version limited to **~5000** accumulations (views, likes, shares, etc...).
+The **FREE** version with limited accumulations (views, likes, shares, etc...).
 
 The advantage of acquiring the license is that the bot continues to 
 work indefinitely and accumulates large amounts of views, shares, etc...
