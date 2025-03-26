@@ -1,4 +1,4 @@
-# Bot Tok
+# Tik Bot
 
 >**Attention:** Bot Tok operates using the Zefoy and Freer platforms. Temporary interruptions in services such as views, shares, favorites, and others may occur on these platforms. These interruptions are not caused by our software and do not imply a permanent failure. 
 We want to clarify that these outages are temporary and services will be restored once Zefoy and Freer resolve the issues. This is important and relevant information for all new Bot Tok users.
@@ -73,6 +73,7 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
 
 >**Attention:** The features that are with ❌ are integrated in the bot <u>BUT ARE PRACTICALLY NEVER AVAILABLE IN THE PROVIDERS</u>!
 
+✅ Up Follow (Zofey)
 ✅ Up Views (Zefoy & Freer)   
 ✅ Up Shares (Zefoy & Freer)  
 ✅ Up Favorites (Zefoy & Freer)  
@@ -560,7 +561,7 @@ node bottok.js -a
 
 Return example:
 ```txt
-Up Comments Hearts, Up Views, Up Shares, Up Favorites
+Up Comments Hearts, Up Views, Up Follow, Up Favorites
 ```
 
 #### Get a Session Status
@@ -725,7 +726,7 @@ Limit 0 = unlimited
 ```txt
 Up Views,10000,https://www.tiktok.com/@user/video/7218328781327584518,Zefoy
 Up Favorites,500,https://www.tiktok.com/@user/video/7218328781327584518,Zefoy
-Up Shares,1000,https://www.tiktok.com/@user/video/7218328781327584518,Zefoy
+Up Follow,5000,https://www.tiktok.com/@user/video/7218328781327584518,Zefoy
 Up Views,50000,https://www.tiktok.com/@user/video/7208664677738450181,Freer
 Up Favorites,5000,https://www.tiktok.com/@user/video/7208664677738450181,Freer
 Up Shares,2000,https://www.tiktok.com/@user/video/7208664677738450181,Zefoy
@@ -766,10 +767,10 @@ Or use the -e or --verbose flags to display more detailed information.
 
 >**Attention:** The license key is <u>LIFETIME</u> and you will be able to enjoy all versions.
 
-The **FREE** version with limited accumulations (views, likes, shares, etc...).
+The **FREE** version with limited accumulations (views, likes, follow, etc...).
 
 The advantage of acquiring the license is that the bot continues to 
-work indefinitely and accumulates large amounts of views, shares, etc...
+work indefinitely and accumulates large amounts of views, follow, etc...
 Unlock this limitation by purchasing a license at [HERE!](https://jordifernandes.com/service/bottok)
 
 Paste a License Key here:
@@ -783,5 +784,5 @@ If you want to give a donation for the developers, you can do it here https://jo
 Thank you very much!!!!
 
 ## Authors
-
+used
 - [Jordi Fernandes (@jfadev)](https://github.com/jfadev)
