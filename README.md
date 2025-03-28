@@ -1,6 +1,6 @@
 # Bot Tok
 
->**Attention:** Bot Tok operates using the Zefoy and Freer platforms. Temporary interruptions in services such as views, shares, favorites, and others may occur on these platforms. These interruptions are not caused by our software and do not imply a permanent failure. 
+>**Attention:** Bot Tok operates using the Zefoy and Freer platforms. Temporary interruptions in services such as follow, shares, favorites, and others may occur on these platforms. These interruptions are not caused by our software and do not imply a permanent failure. 
 We want to clarify that these outages are temporary and services will be restored once Zefoy and Freer resolve the issues. This is important and relevant information for all new Bot Tok users.
 
 Bot Tok is an TikTok Up Bot (likes, shares, favorites and views)
@@ -14,7 +14,7 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
 
 >**Attention:** Before purchasing a licence key, please use the free version. Please note that due to the nature of this product, we regret to inform you that it <u>CANNOT BE RETURNED OR EXCHANGED</u>. Please consider your purchase decision carefully, as <u>ALL SALES ARE FINAL</u>.
 
->**Disclaimer:** Using a TikTok viewbot is against the platform's Terms of Service. We do not encourage the act or idea of artificially increasing the number of views, likes, shares or favorites of your videos. <u>The use of BotTok is at the user's own risk</u>.
+>**Disclaimer:** Using a TikTok viewbot is against the platform's Terms of Service. We do not encourage the act or idea of artificially increasing the number of follow, like, shares or favorites of your videos. <u>The use of BotTok is at the user's own risk</u>.
 
 - [Bot Tok](#bot-tok)
   - [Features](#features)
@@ -73,7 +73,7 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
 
 >**Attention:** The features that are with ❌ are integrated in the bot <u>BUT ARE PRACTICALLY NEVER AVAILABLE IN THE PROVIDERS</u>!
 
-✅ Up Views (Zefoy & Freer)   
+✅ Up Follow (Zefoy & Freer)   
 ✅ Up Shares (Zefoy & Freer)  
 ✅ Up Favorites (Zefoy & Freer)  
 ✅ Up Comments Hearts (Zefoy & Freer)  
@@ -119,7 +119,7 @@ or Run in terminal
 curl -o win-install.bat https://raw.githubusercontent.com/jfadev/bottok/main/win-install.bat & win-install.bat
 ```
 
-#### Linux
+#### Linu ox
 
 📹 Install in Linux Tutorial (coming soon)
 
@@ -351,7 +351,7 @@ Options:
   -h, --help                Show help
   -v, --version             BotTok version
   -l, --video <link>        TikTok video URL to perform the task on
-  -t, --task <task>         Task to perform on the TikTok video (example: 'Up Views')
+  -t, --task <task>         Task to perform on the TikTok video (example: 'Up Follow')
   -q, --provider <prov>     Provider Zefoy or Freer (default: Zefoy)
   -c, --cookies <path>      File path to store session cookies (default: cookies.json)
   -u, --user-agent <ua>     User agent to be used (default: random user-agent)
@@ -367,32 +367,32 @@ Options:
   -m, --minimal             Hide ASCII art header
   -d, --detach              Output mode for background processes
   -x, --limit <int>         By the time the accumulation limit is reached
-  -z, --min-limit <int>     If it does not accumulate x amount in 60 minutes it stops
+  -z, --min-limit <int>     If it does not accumulate x amount in 20 minutes it stops
   -f, --max-time <int>      Sets a maximum time limit in hours before stops
   -a, --available-tasks     Returns the currently available tasks
   -g, --session-status      Returns the session status
   -i, --init-accums         Set a initial accumulation value (default: 0)
   -e, --verbose             Display detailed processing information in logs
   -R, --retry-timeout       Waiting trying again timeout in minutes (default: 1)
-  -H, --c-hearts-qty <int>  Set the number of hearts to send to the comment (25, 50 or 100)
-  -T, --c-text-filter <str> Filter comments by comment text
-  -U, --c-user-filter <str> Filter comments by comment author
+  -H, --c-hearts-qty <int>  Set the number of hearts to send to the Follow (1000, 5000 or 10000)
+  -T, --c-text-filter <str> Filter Follow by Follow text
+  -U, --c-user-filter <str> Filter Follow by Follow author
 ```
 
 ## Advanced
 
 #### Run a Task with a Video Directly
 
-Set task with `-t` flag (`Up Views`, `Up Shares`, `Up Favorites`) and video url with `-l` flag. Zefoy is used by default as provider, if you want to use Freer as provider add the `-q 'Freer'` flag.
+Set task with `-t` flag (`Up Follow`, `Up Shares`, `Up Favorites`) and video url with `-l` flag. Zefoy is used by default as provider, if you want to use Freer as provider add the `-q 'Freer'` flag.
 ```bash
-node bottok.js -t 'Up Views' -l https://www.tiktok.com/@jfadev/video/7216697213693529349
+node bottok.js -t 'Up Follow' -l https://www.tiktok.com/@jfadev/video/7216697213693529349
 ```
 
 #### Limit Task Accumulations
 
 Set the limit accumulations value with `-x` flag. The bot will stop when this limit is reached.
 ```bash
-node bottok.js -t 'Up Views' -x 20000 -l https://www.tiktok.com/@jfadev/video/7216697213693529349
+node bottok.js -t 'Up Follow' -x 20000 -l https://www.tiktok.com/@jfadev/video/7216697213693529349
 ```
 
 
@@ -526,7 +526,7 @@ node bottok.js -R 5
 
 #### Set Comment Hearts quantity
 
-Set the number of hearts to send to the comment (25, 50 or 100).
+Set the number of hearts to send to the follow (1000, 5000 or 10000).
 Only work with Zefoy.
 
 ```bash
@@ -560,7 +560,7 @@ node bottok.js -a
 
 Return example:
 ```txt
-Up Comments Hearts, Up Views, Up Shares, Up Favorites
+Up Comments Hearts, Up Follow, Up Shares, Up Favorites
 ```
 
 #### Get a Session Status
@@ -723,7 +723,7 @@ Limit 0 = unlimited
 ![](doc/9.png?raw=true)
 
 ```txt
-Up Views,10000,https://www.tiktok.com/@user/video/7218328781327584518,Zefoy
+Up Follow,1000,https://www.tiktok.com/@user/video/7218328781327584518,Zefoy
 Up Favorites,500,https://www.tiktok.com/@user/video/7218328781327584518,Zefoy
 Up Shares,1000,https://www.tiktok.com/@user/video/7218328781327584518,Zefoy
 Up Views,50000,https://www.tiktok.com/@user/video/7208664677738450181,Freer
