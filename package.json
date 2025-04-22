@@ -1,6 +1,6 @@
 {
   "name": "bottok",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Bot Tok is an TikTok Up Bot (likes, shares, favorites and views) based in node.js, puppeteer and third-party providers (zefoy.com & freer.es). (Android, Windows, Linux)",
   "type": "module",
   "main": "bottok.js",

@@ -77,11 +77,12 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
 ✅ Up Shares (Zefoy & Freer)  
 ✅ Up Favorites (Zefoy & Freer)  
 ✅ Up Comments Hearts (Zefoy & Freer)  
-❌ Up Hearts (Zefoy & Freer)  
+✅ Up Hearts (Zefoy & Freer)  
 ❌ Up Live Stream (Zefoy)  
-❌ Up Live Views (Freer)  
+✅ Up Live Views (Freer)  
 ✅ Auto Captcha Solver  
 ✅ Captcha in Terminal (Optional)  
+✅ Captcha Viewer in Browser  
 ✅ Auto Bypass Cloudflare (Windows & Linux)  
 ✅ Smart Sessions Management (Cloudlfare & Zefoy/Freer Cookies, UA, Proxy)  
 ✅ Video URLs History  
@@ -90,7 +91,7 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
 ✅ Random Proxy from List  
 ✅ Filter Proxies by Country  
 ✅ Activity Log  
-✅ Custom Accumulation Limit
+✅ Custom Accumulation Limit  
 ✅ Run in Windows, Linux and Android (Termux)  
 💎 Not limited accumulations (Premium Mode)  
 💎 Multi Task (Premium Mode)  
@@ -471,6 +472,9 @@ node bottok.js -w
 #### Use Terminal Captcha
 
 If the auto captcha solver has problems you can solve the captcha manually.
+You can also view the captcha image at the following address
+in your browser `http://localhost:8077`
+
 ```bash
 node bottok.js -k
 ```
