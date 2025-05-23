@@ -54,14 +54,18 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
       - [Get Currently Available Tasks](#get-currently-available-tasks)
       - [Get a Session Status](#get-a-session-status)
       - [Connect to an Existing Browser Instance](#connect-to-an-existing-browser-instance)
-      - [Bypass Cloudflare Manually](#bypass-cloudflare-manually)
+      - [New Bypass Cloudflare Manually](#new-bypass-cloudflare-manually)
         - [Android](#android)
         - [Linux](#linux-3)
         - [Windows](#windows-3)
-      - [Trick to avoid being banned on Freer captcha](#trick-to-avoid-being-banned-on-freer-captcha)
+      - [Bypass Cloudflare Manually](#bypass-cloudflare-manually)
         - [Android](#android-1)
         - [Linux](#linux-4)
         - [Windows](#windows-4)
+      - [Trick to avoid being banned on Freer captcha](#trick-to-avoid-being-banned-on-freer-captcha)
+        - [Android](#android-2)
+        - [Linux](#linux-5)
+        - [Windows](#windows-5)
   - [Expert](#expert)
       - [Detach Mode](#detach-mode)
       - [Multi Task Mode](#multi-task-mode)
@@ -612,6 +616,48 @@ Run BotTok with the `-r` flag:
 ```bash
 node bottok.js -r ws://127.0.0.1:9222/devtools/browser/e5095d9d-9095-4be8-a418-cd8a3f4f020a
 ```
+
+#### New Bypass Cloudflare Manually
+
+When Cloudflare's protection or Captcha cannot be resolved automatically, you must create a valid cookie with the following simple instructions.
+
+##### Android
+
+>**Attention:** Kiwi Browser has been discontinued and is no longer available on the Play Store. However, you can still download the latest APK from APKPure at:
+https://apkpure.com/kiwi-browser-fast-quiet/com.kiwibrowser.browser
+
+1. Install "Kiwi Browser" (chromium-based browser that allows you to install extensions).
+2. Open Kiwi Browser, enter to zefoy.com, pass Cloudflare's protection, solve the captcha.
+3. Click on the 3 dots button → DevTools → Network → request → right click → Copy as cURL.
+4. Open Termux
+5. `proot-distro login alpine`
+6. `cd bottok`
+7. `nano cookies.txt`
+8.  Click on the screen, and click on "Paste".
+9.  Click CTRL, then O, then ENTER.
+10. Click CTRL, then click X.
+11. `node bottok.js`
+
+##### Linux
+
+1. Open Chrome, enter to zefoy.com, pass Cloudflare's protection, solve the captcha.
+2. Press F12 → DevTools → Network → request → right click → Copy as cURL.
+3. Open Terminal
+4. `cd bottok`
+5. `nano cookies.txt`
+6.  Click second mouse button, and click on "Paste".
+7.  Click CTRL, then O, then ENTER.
+8.  Click CTRL, then click X.
+9.  `node bottok.js`
+
+##### Windows
+
+1. Open Chrome, enter to zefoy.com, pass Cloudflare's protection, solve the captcha.
+2. Press F12 → DevTools → Network → request → right click → Copy as cURL.
+3. Open bottok folder
+4. Edit/Create cookies.txt file, Paste with CTRL+V, Save file.
+5. Click on `win-bottok.bat`
+
 
 #### Bypass Cloudflare Manually
 
