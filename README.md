@@ -353,35 +353,37 @@ node bottok.js -b "C:\Program Files\Google\Chrome\Application\Chrome.exe"
 Usage: node bottok.js [options]
 
 Options:
-  -h, --help                Show help
-  -v, --version             BotTok version
-  -l, --video <link>        TikTok video URL to perform the task on
-  -t, --task <task>         Task to perform on the TikTok video (example: 'Up Views')
-  -q, --provider <prov>     Provider Zefoy or Freer (default: Zefoy)
-  -c, --cookies <path>      File path to store session cookies (default: cookies.json)
-  -u, --user-agent <ua>     User agent to be used (default: random user-agent)
-  -p, --proxy <proxy>       The proxy to be used (example: http://localhost:8080)
-  -s, --proxies <path>      The path of the proxies file to use randomly (default: proxies.txt)
-  -n, --proxies-country <c> Filter proxies by country code (example: 'FR' or list 'ES,FR,IT')
-  -b, --browser <path>      Path to a browser executable to use instead of Chromium  
-  -r, --browser-remote <ws> Set browser WS endpoint to connect to an existing instance
-  -j, --browser-user <path> Set custom user data directory of browser (profile folder)
-  -w, --no-headless         Open visible browser window  
-  -k, --terminal-captcha    Terminal captcha instead of auto solver
-  -o, --log                 Write activity log (activity.log)
-  -m, --minimal             Hide ASCII art header
-  -d, --detach              Output mode for background processes
-  -x, --limit <int>         By the time the accumulation limit is reached
-  -z, --min-limit <int>     If it does not accumulate x amount in 60 minutes it stops
-  -f, --max-time <int>      Sets a maximum time limit in hours before stops
-  -a, --available-tasks     Returns the currently available tasks
-  -g, --session-status      Returns the session status
-  -i, --init-accums         Set a initial accumulation value (default: 0)
-  -e, --verbose             Display detailed processing information in logs
-  -R, --retry-timeout       Waiting trying again timeout in minutes (default: 1)
-  -H, --c-hearts-qty <int>  Set the number of hearts to send to the comment (25, 50 or 100)
-  -T, --c-text-filter <str> Filter comments by comment text
-  -U, --c-user-filter <str> Filter comments by comment author
+  -h, --help                 Show help
+  -v, --version              BotTok version
+  -l, --video <link>         TikTok video URL to perform the task on
+  -t, --task <task>          Task to perform on the TikTok video (example: 'Up Views')
+  -q, --provider <prov>      Provider Zefoy or Freer (default: Zefoy)
+  -c, --cookies <path>       File path to store session cookies (default: cookies.json)
+  -u, --user-agent <ua>      User agent to be used (default: random user-agent)
+  -p, --proxy <proxy>        The proxy to be used (example: http://localhost:8080)
+  -s, --proxies <path>       The path of the proxies file to use randomly (default: proxies.txt)
+  -n, --proxies-country <c>  Filter proxies by country code (example: 'FR' or list 'ES,FR,IT')
+  -b, --browser <path>       Path to a browser executable to use instead of Chromium  
+  -r, --browser-remote <ws>  Set browser WS endpoint to connect to an existing instance
+  -j, --browser-user <path>  Set custom user data directory of browser (profile folder)
+  -w, --no-headless          Open visible browser window  
+  -k, --terminal-captcha     Terminal captcha instead of auto solver
+  -o, --log                  Write activity log (activity.log)
+  -m, --minimal              Hide ASCII art header
+  -d, --detach               Output mode for background processes
+  -x, --limit <int>          By the time the accumulation limit is reached
+  -z, --min-limit <int>      If it does not accumulate x amount in 60 minutes it stops
+  -f, --max-time <int>       Sets a maximum time limit in hours before stops
+  -a, --available-tasks      Returns the currently available tasks
+  -g, --session-status       Returns the session status
+  -i, --init-accums <int>    Set a initial accumulation value (default: 0)
+  -e, --verbose              Display detailed processing information in logs
+  -R, --retry-timeout <int>  Waiting trying again timeout in minutes (default: 1)
+  -C, --wait-threshold <int> Cooldown applies if wait time exceeds this in minutes (default: 60)
+  -Y, --wait-cooldown <int>  Time to wait when threshold is triggered in minutes (default: 20)
+  -H, --c-hearts-qty <int>   Set the number of hearts to send to the comment (25, 50 or 100)
+  -T, --c-text-filter <str>  Filter comments by comment text
+  -U, --c-user-filter <str>  Filter comments by comment author
 ```
 
 ## Advanced
