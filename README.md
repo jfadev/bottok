@@ -384,6 +384,7 @@ Options:
   -H, --c-hearts-qty <int>   Set the number of hearts to send to the comment (25, 50 or 100)
   -T, --c-text-filter <str>  Filter comments by comment text
   -U, --c-user-filter <str>  Filter comments by comment author
+  -P, --proxy-nocf           Exclude proxies with Cloudflare protection
 ```
 
 ## Advanced
