@@ -4,7 +4,7 @@ echo Bot Tok Windows Update
 echo Latest versions:
 git describe --tags --abbrev=0
 
-echo Check BotTok Dependenties:
+echo Check BotTok Dependencies:
 echo Node.js
 node --version
 echo Git

@@ -2,7 +2,7 @@
 
 echo "Bot Tok Alpine Install"
 
-echo "Install BotTok Dependenties:"
+echo "Install BotTok Dependencies:"
 
 # install OpenSSH
 apk add openssh

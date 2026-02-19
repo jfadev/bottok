@@ -1,7 +1,7 @@
 @echo off
 echo Bot Tok Windows Install
 
-echo Install BotTok Dependenties:
+echo Install BotTok Dependencies:
 where node >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
     echo Installing Node.js...

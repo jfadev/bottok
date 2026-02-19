@@ -5,7 +5,7 @@ echo "Bot Tok Ubuntu Update"
 echo "Latest version:"
 git describe --tags --abbrev=0
 
-echo "Check BotTok Dependenties:"
+echo "Check BotTok Dependencies:"
 declare -a programs=("nodejs" "npm" "git" "openssh-client")
 for program in "${programs[@]}"; do
     echo $program

@@ -18,18 +18,23 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
 
 - [Bot Tok](#bot-tok)
   - [Features](#features)
-  - [Install](#install)
-      - [Windows](#windows)
-      - [Linux](#linux)
-      - [Android (Termux)](#android-termux)
-  - [Manual Install](#manual-install)
+  - [Quick Start](#quick-start)
+    - [Windows](#windows)
+    - [Linux](#linux)
+    - [MacOS](#macos)
+    - [Android (Termux)](#android-termux)
+  - [Classic Install](#classic-install)
       - [Windows](#windows-1)
       - [Linux](#linux-1)
       - [Android (Termux)](#android-termux-1)
-  - [Update](#update)
+  - [Manual Install](#manual-install)
       - [Windows](#windows-2)
       - [Linux](#linux-2)
       - [Android (Termux)](#android-termux-2)
+  - [Update](#update)
+      - [Windows](#windows-3)
+      - [Linux](#linux-3)
+      - [Android (Termux)](#android-termux-3)
   - [Use](#use)
   - [Options](#options)
   - [Advanced](#advanced)
@@ -56,16 +61,16 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
       - [Connect to an Existing Browser Instance](#connect-to-an-existing-browser-instance)
       - [New Bypass Cloudflare Manually](#new-bypass-cloudflare-manually)
         - [Android](#android)
-        - [Linux](#linux-3)
-        - [Windows](#windows-3)
-      - [Bypass Cloudflare Manually](#bypass-cloudflare-manually)
-        - [Android](#android-1)
         - [Linux](#linux-4)
         - [Windows](#windows-4)
-      - [Trick to avoid being banned on Freer captcha](#trick-to-avoid-being-banned-on-freer-captcha)
-        - [Android](#android-2)
+      - [Bypass Cloudflare Manually](#bypass-cloudflare-manually)
+        - [Android](#android-1)
         - [Linux](#linux-5)
         - [Windows](#windows-5)
+      - [Trick to avoid being banned on Freer captcha](#trick-to-avoid-being-banned-on-freer-captcha)
+        - [Android](#android-2)
+        - [Linux](#linux-6)
+        - [Windows](#windows-6)
   - [Expert](#expert)
       - [Detach Mode](#detach-mode)
       - [Multi Task Mode](#multi-task-mode)
@@ -101,7 +106,67 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
 💎 Multi Task (Premium Mode)  
 💎 Run as a Detach Process (Premium Mode)  
 
-## Install
+## Quick Start
+
+> **Attention:** For more advanced usage, such as running Bot Tok in *detach mode* or using *multi-task scripts*, it is recommended to perform a [classic install](#classic-install) .  
+> The `npx` method, however, is sufficient for most users, especially beginners.
+
+The easiest way to run Bot Tok is via `npx`.  
+No installation is required: simply install Node.js and run the command.  
+This method automatically downloads the latest version of Bottok and Chromium.  
+No Git, SSH, or other dependencies are needed.
+
+
+### Windows
+
+1. Install Node.js ≥ 18 (recommended 18 LTS or 22 LTS) from [nodejs.org](https://nodejs.org)
+2. Open a terminal (PowerShell or CMD) and run:
+```bash
+npx bottok
+```
+
+### Linux
+
+1. Install Node.js ≥ 18 (recommended 18 LTS or 22 LTS) (e.g., `sudo apt install nodejs npm`).
+2. Open a terminal and run:
+```bash
+npx bottok
+```
+
+### MacOS
+
+1. Install Node.js ≥ 18 (recommended 18 LTS or 22 LTS) (using Homebrew or from [nodejs.org](https://nodejs.org)).
+2. Open a terminal and run:
+```bash
+npx bottok
+```
+
+### Android (Termux)
+
+Requirements: [termux](https://termux.dev/en/) (install Termux in your Android phone from F-Droid store, The PlayStore version ins outdated and not work)
+
+1. Run in Termux terminal (Install Alpine in Termux)
+
+```bash
+pkg upgrade && pkg install wget && wget https://raw.githubusercontent.com/jfadev/bottok/main/termux-install.sh && chmod +x termux-install.sh && ./termux-install.sh
+```
+
+2. Run in Alpine terminal (Install Node environment and launch NPX)
+
+```bash
+wget https://raw.githubusercontent.com/jfadev/bottok/main/alpine-npx-install.sh && chmod +x alpine-npx-install.sh && ./alpine-npx-install.sh
+```
+
+*Note:* To enter Alpine from Termux with [proot-distro](https://github.com/termux/proot-distro) use the following command:
+```bash
+proot-distro login alpine
+```
+and run:
+```bash
+npx bottok
+```
+
+## Classic Install
 
 >**Attention:** To use Git and clone the repository you will need to have *SSH Public Key*. Take a look at this: [Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 Without this you may have problems installing. This will make it much easier to upgrade your BotTok to the latest version available with a single command.
@@ -301,6 +366,9 @@ proot-distro login alpine
 
 ## Update
 
+>**Attention:** When running Bot Tok via `npx`, you **always use the latest version**.  
+No additional update command is required
+
 #### Windows
 
 1. Run in terminal
@@ -331,6 +399,8 @@ cd bottok
 
 ## Use
 
+>**Attention:** When running Bot Tok via `npx`, run `npx bottok`
+
 Type the following command in your terminal:
 
 ```bash
@@ -348,6 +418,8 @@ node bottok.js -b "C:\Program Files\Google\Chrome\Application\Chrome.exe"
 ```
 
 ## Options
+
+>**Attention:** When running Bot Tok via `npx`, you should pass any command-line options directly to `npx bottok [options]`
 
 ```txt
 Usage: node bottok.js [options]
