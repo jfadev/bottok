@@ -89,7 +89,7 @@ based in node.js, puppeteer and third-party providers (zefoy.com & freer.es).
 ✅ Up Hearts (Zefoy & Freer)  
 ❌ Up Live Stream (Zefoy)  
 ✅ Up Live Views (Freer)  
-✅ Up Reposts (Zefoy & Freer) 
+✅ Up Reposts (Zefoy & Freer)  
 ✅ Auto Captcha Solver  
 ✅ Captcha in Terminal (Optional)  
 ✅ Captcha Viewer in Browser  
